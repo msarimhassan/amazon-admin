@@ -17,6 +17,7 @@ const initialValues = {
 export default function Login() {
     const [mode, setMode] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const onSubmit = async ({ email, password }) => {
         setError('');
         if (mode == '') {
@@ -24,16 +25,8 @@ export default function Login() {
             return;
         }
         delete values['picked'];
-        const response = await Network.post(
-            Urls.login,
-            {
-                email: email,
-                password: password,
-            },
-            (
-                await config()
-            ).headers
-        );
+        console.log({ values });
+        const response = await Network.post(Urls.login,values,(await config()).headers);
         console.log({ response });
     };
 

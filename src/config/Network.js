@@ -1,4 +1,4 @@
-import client from ".";
+import client from "./index";
 
 export default {
     get: async (url, headers, data) => {
