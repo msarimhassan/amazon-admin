@@ -1,0 +1,1 @@
+export const bannerColor = '#E2DBDA';
