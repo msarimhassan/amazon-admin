@@ -1,3 +1,6 @@
 export default {
-    login: 'auth/admin/login',
+    login: 'auth/',
+    getRoles: 'admin/get-roles',
+    createShop: 'admin/create-shop',
+    getShops: 'admin/get-shops',
 };

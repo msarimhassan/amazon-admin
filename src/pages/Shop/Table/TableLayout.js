@@ -3,6 +3,8 @@ import { Table } from 'reactstrap';
 import TableRow from './TableRow';
 import TableHeader from './TableHeader';
 export default function TableLayout({ HeaderData, BodyData }) {
+
+    console.log(BodyData);
     return (
         <>
             <Table bordered hover className='mt-4 table-responsive'>
@@ -14,14 +16,14 @@ export default function TableLayout({ HeaderData, BodyData }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {BodyData.map((product) => {
+                    {BodyData.map((shop) => {
                         return (
                             <TableRow
-                                key={product.id}
-                                id={product.id}
-                                name={product.name}
-                                category={product.category}
-                                link={product.link}
+                                key={shop._id}
+                                
+                                name={shop.name}
+                                email={shop.email}
+                                // link={product.link}
                             />
                         );
                     })}

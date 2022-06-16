@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavData } from '../common/NavData';
+import { superAdmin } from '../common/NavData';
+import { shop } from '../common/ShopNav';
 import '../styles/Sidebar.css';
 import { NavLink } from 'react-router-dom';
 import  useTogglerContext  from '../hooks/useTogglerContext';
@@ -7,6 +8,9 @@ import  useTogglerContext  from '../hooks/useTogglerContext';
 export default function Sidebar() {
     const { showSidebar } = useTogglerContext();
     const [selected, setSelected] = useState(null);
+    const user= JSON.parse(localStorage.getItem('userData'));
+    const {name}=user.role;
+  console.log(name);
     const Row = ({ icon, title, link }) => {
         return (
             <NavLink
@@ -42,8 +46,10 @@ export default function Sidebar() {
 
     return (
         <div className='Sidebar'>
+
+          {name === 'Super admin' ? 
             <div className='Sidebar-list'>
-                {NavData.map((item, key) => {
+                {superAdmin.map((item, key) => {
                     return (
                         <Row
                             key={key}
@@ -54,7 +60,19 @@ export default function Sidebar() {
                         />
                     );
                 })}
-            </div>
+            </div> :  <div className='Sidebar-list'>
+                {shop.map((item, key) => {
+                    return (
+                        <Row
+                            key={key}
+                            icon={item.icon}
+                            title={item.title}
+                            link={item.link}
+                            selected={item.link == window.location.pathname}
+                        />
+                    );
+                })}
+            </div> }
         </div>
     );
 }

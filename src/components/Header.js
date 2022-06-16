@@ -1,10 +1,11 @@
 import React from 'react'
-import { Navbar,NavbarBrand,NavbarToggler,Collapse,Nav,NavItem,NavLink } from 'reactstrap';
+import { Navbar,NavbarBrand,NavbarToggler,Collapse,Nav,NavItem,NavLink,Button } from 'reactstrap';
 import Logo from '../assets/images/logo.png';
 import '../styles/App.css';
 import useTogglerContext  from '../hooks/useTogglerContext';
+import useAuth from "../hooks/useAuth" 
 export default function Header() {
-
+     const{Logout}=useAuth();
     const {showSidebar,setSidebar} = useTogglerContext();
 
     console.log(showSidebar);
@@ -24,7 +25,9 @@ export default function Header() {
                           <NavLink href='https://github.com/reactstrap/reactstrap'>GitHub</NavLink>
                       </NavItem>
                   </Nav>
+                  
               </Collapse>
+              <Button onClick={Logout}>Logout</Button>
           </Navbar>
       </div>
   );
