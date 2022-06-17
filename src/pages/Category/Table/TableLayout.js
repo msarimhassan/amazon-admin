@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
-import TableRow from './TableRow';
 import TableHeader from './TableHeader';
+import TableRow from './TableRow';
 export default function TableLayout({ HeaderData, BodyData }) {
 
     console.log(BodyData);
@@ -16,13 +16,13 @@ export default function TableLayout({ HeaderData, BodyData }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {BodyData.map((shop) => {
+                    {BodyData.map((category) => {
                         return (
                             <TableRow
-                                key={shop._id}
-                                id={shop._id}
-                                name={shop.name}
-                                email={shop.email}
+                                key={category._id}
+                                id={category._id}
+                                name={category.name}
+                                imgUrl={category.imageUrl}
                             />
                         );
                     })}

@@ -29,6 +29,7 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const getShopes = async () => {
         setLoading(true);
+        
         const response = await Network.get(Urls.getShops, (await config()).headers);
         setShopList(response.data.shops);
         setLoading(false);

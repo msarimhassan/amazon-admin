@@ -24,7 +24,7 @@ export const authConfig = async (token) => {
     };
 };
 
-export const muntipartConfig = async () => {
+export const multipartConfig = async () => {
     const token = localStorage.getItem('token');
     return {
         headers: {

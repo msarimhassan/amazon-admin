@@ -3,4 +3,6 @@ export default {
     getRoles: 'admin/get-roles',
     createShop: 'admin/create-shop',
     getShops: 'admin/get-shops',
+    createCategory: 'admin/add-category',
+    getCategories: '/category/get-categories',
 };
