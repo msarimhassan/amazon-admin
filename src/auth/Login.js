@@ -57,7 +57,7 @@ export default function Login() {
         initialValues,
         onSubmit,
         validationSchema: loginSchema,
-    });
+    }); 
 
     const handleRadio = (e) => {
         const { name, value } = e.target;

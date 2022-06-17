@@ -20,7 +20,7 @@ export default function TableLayout({ HeaderData, BodyData }) {
                         return (
                             <TableRow
                                 key={shop._id}
-                                
+                                id={shop._id}
                                 name={shop.name}
                                 email={shop.email}
                                 // link={product.link}

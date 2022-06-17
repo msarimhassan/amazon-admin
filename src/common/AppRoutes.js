@@ -47,6 +47,9 @@ const AppRoutes = [
         path:'/profile',
         element:<ProfilePage />
     },
+    {
+        path:'/shoprequest',
+    }
 ];
 
 export default AppRoutes;

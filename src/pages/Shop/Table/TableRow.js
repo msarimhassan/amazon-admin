@@ -3,6 +3,9 @@ import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export default function ({ id,name,email }) {
+    const handleDelete=(id)=>{
+    console.log({id});
+    }
     return (
         <>
             <tr>
@@ -10,7 +13,7 @@ export default function ({ id,name,email }) {
                 <td>{name}</td>
                 <td>{email}</td>
                 <td>
-                  
+                  <Button color='danger' onClick={()=>handleDelete(id)}>Delete</Button>
                 </td>
             </tr>
         </>
