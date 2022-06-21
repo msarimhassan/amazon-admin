@@ -29,7 +29,7 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const getShopes = async () => {
         setLoading(true);
-        
+
         const response = await Network.get(Urls.getShops, (await config()).headers);
         setShopList(response.data.shops);
         setLoading(false);
@@ -37,6 +37,14 @@ export default function ShopPage() {
     useEffect(() => {
         getShopes();
     }, []);
+
+    const handleDelete = async(id) => {
+        console.log(id);
+          const arry=shopList.filter(shop=>shop._id!==id);
+          setShopList(arry);
+        const response=await Network.delete(Urls.deleteShop+id,{},(await config()).headers);
+        console.log(response.data);
+    };
 
     const HeaderData = ['Name', 'Email', 'Actions'];
     return (
@@ -46,7 +54,15 @@ export default function ShopPage() {
                     Add New Shop
                 </Button>
             </Link>
-            {loading ? <Loader/> : <TableLayout HeaderData={HeaderData} BodyData={shopList} />}
+            {loading ? (
+                <Loader />
+            ) : (
+                <TableLayout
+                    HeaderData={HeaderData}
+                    BodyData={shopList}
+                    handleDelete={handleDelete}
+                />
+            )}
         </Container>
     );
 }

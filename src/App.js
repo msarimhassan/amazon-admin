@@ -8,8 +8,8 @@ import { TogglerContext, AuthContext, UserContext } from './context';
 import Overlay from './components/Overlay';
 import PageWrapper from './components/PageWrapper';
 import AuthRoutes from './common/AuthRoutes';
-
 import './index.css';
+import { client } from './config';
 import useAuth from './hooks/useAuth';
 
 export default function App() {
@@ -17,6 +17,7 @@ export default function App() {
     const [token, setToken] = useState();
     console.log('statte token', token);
     const [userData, setUserData] = useState();
+    const { Logout } = useAuth();
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
@@ -26,7 +27,9 @@ export default function App() {
             setUserData(user);
         }
     }, []);
-
+    client.addMonitor((res) => {
+        console.log({ res });
+    });
     return (
         <AuthContext.Provider value={{ token, setToken }}>
             <UserContext.Provider value={{ userData, setUserData }}>

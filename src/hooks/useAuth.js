@@ -1,13 +1,10 @@
 import { AuthContext } from '../context';
 import { useContext } from 'react';
 import useUser from './useUser';
-import { Route, useNavigate } from 'react-router-dom';
-import  Routes from "../common/Routes"
-
 const useAuth = () => {
     const { token, setToken } = useContext(AuthContext);
     const { setUser, setUserData, removeUser } = useUser();
-    let navigation=useNavigate();
+   
 
     const Login = (token, user) => {
         setToken(token);
@@ -18,7 +15,6 @@ const useAuth = () => {
         setToken(null);
         window.localStorage.removeItem('token');
         removeUser();
-        navigation(Routes.Login);
     };
 
     const retreiveData = () => {

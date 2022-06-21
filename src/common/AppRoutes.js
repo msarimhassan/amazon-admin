@@ -8,6 +8,7 @@ import SettingsPage from '../pages/Settings';
 import ShopPage from '../pages/Shop';
 import ShopForm from '../pages/Shop/ShopForm';
 import ProfilePage from '../pages/Profile';
+import Routes from './Routes';
 const AppRoutes = [
     {
         path: '/',
@@ -26,7 +27,7 @@ const AppRoutes = [
         element: <CategoryForm />,
     },
     {
-        path: '/productpage/addproduct/:mode',
+        path: Routes.manageProduct,
         element: <ProductForm />,
     },
     {

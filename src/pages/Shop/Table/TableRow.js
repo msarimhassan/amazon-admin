@@ -2,10 +2,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-export default function ({ id,name,email }) {
-    const handleDelete=(id)=>{
-    console.log({id});
-    }
+export default function ({ id,name,email,handleDelete }) {
     return (
         <>
             <tr>

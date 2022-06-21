@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'reactstrap';
-import ProductTable from '../../components/TableLayout';
 import { Button } from 'reactstrap';
-import { HeaderData } from '../../common/HeaderData';
-import { ProductData } from '../../common/ProductData';
-import { Link } from 'react-router-dom';
-export default function ProductPage () {
+import TableLayout from './Table/TableLayout';
+import { Network, Urls, config } from '../../config';
+
+import { useNavigate} from 'react-router-dom';
+export default function ProductPage() {
+    const HeaderData = ['Name', 'Category', 'Images', 'Actions'];
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    let navigate=useNavigate();
+    useEffect(() => {
+        getProducts();
+    }, []);
+
+    const deleteProduct = async (id) => {
+        console.log(id);
+        const arry = products.filter((product) => product._id !== id);
+        setProducts(arry);
+        console.log(Urls.deleteProduct + id);
+        const response = await Network.delete(Urls.deleteProduct + id, {}, (await config()).headers);
+        console.log(response.data);
+    };
+    const getProducts = async () => {
+        setLoading(true);
+        const response = await Network.get(Urls.getProducts, (await config()).headers);
+        console.log(response.data.products);
+        setProducts(response.data.products);
+        setLoading(false);
+    };
     return (
         <Container>
-            <Link to='/productpage/addproduct/create'>
-                <Button color='primary' className='mt-4'>
-                    Add new Product
-                </Button>
-            </Link>
-            <ProductTable HeaderData={HeaderData} BodyData={ProductData} />
+            {/* <Button color='primary' className='mt-4' onClick={()=>navigate('/productpage/addproduct/create')}> */}
+            <a href='/productpage/addproduct/create'>Add new Product</a>
+
+            {loading ? null : (
+                <TableLayout
+                    HeaderData={HeaderData}
+                    BodyData={products}
+                    deleteProduct={deleteProduct}
+                />
+            )}
         </Container>
     );
 }

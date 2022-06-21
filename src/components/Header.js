@@ -3,12 +3,27 @@ import { Navbar,NavbarBrand,NavbarToggler,Collapse,Nav,NavItem,NavLink,Button } 
 import Logo from '../assets/images/logo.png';
 import '../styles/App.css';
 import useTogglerContext  from '../hooks/useTogglerContext';
+import { useNavigate } from 'react-router-dom';
 import useAuth from "../hooks/useAuth" 
+import {client} from "../config"
 export default function Header() {
      const{Logout}=useAuth();
-    const {showSidebar,setSidebar} = useTogglerContext();
+     let navigate=useNavigate();
+    const {showSidebar,setSidebar} =  useTogglerContext();
 
     console.log(showSidebar);
+    const handleLogout=()=>{
+        Logout();
+        navigate('/login');
+    }
+
+    client.addMonitor(res=>{
+        if(res.status==='401')
+        {
+            handleLogout();
+        }
+    })
+
   return (
       <div>
           <Navbar color='light' light fixed='top'>
@@ -27,7 +42,7 @@ export default function Header() {
                   </Nav>
                   
               </Collapse>
-              <Button onClick={Logout}>Logout</Button>
+              <Button onClick={()=>handleLogout()}>Logout</Button>
           </Navbar>
       </div>
   );

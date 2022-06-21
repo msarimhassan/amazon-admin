@@ -29,11 +29,9 @@ export default function Login() {
             setError('Required');
             return;
         }
-
         setError('');
-
         delete values['picked'];
-        console.log({ values });
+        // console.log({ values });
         setLoading(true);
         const response = await Network.post(Urls.login + mode, values, (await config()).headers);
         console.log({response})
@@ -47,9 +45,11 @@ export default function Login() {
             console.log(token);
             Login(token, superAdmin);
              navigation(Routes.Homepage);
-        } else if (mode === 'user/login') {
+        } else if (mode == 'shop/login') {
+            console.log('Its a shop');
             const { token, shop } = response.data;
             Login(token, shop);
+             navigation(Routes.Homepage);
         }
     };
 

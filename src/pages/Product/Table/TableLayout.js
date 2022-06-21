@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table } from 'reactstrap';
-import TableRow from './TableRow';
 import TableHeader from './TableHeader';
-export default function TableLayout({ HeaderData, BodyData,handleDelete }) {
-     
+import TableRow from './TableRow';
+export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
+
     console.log(BodyData);
     return (
         <>
@@ -16,14 +16,15 @@ export default function TableLayout({ HeaderData, BodyData,handleDelete }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {BodyData.map((shop) => {
+                    {BodyData.map((product) => {
                         return (
                             <TableRow
-                                key={shop._id}
-                                id={shop._id}
-                                name={shop.name}
-                                email={shop.email}
-                                handleDelete={handleDelete}
+                                key={product._id}
+                                id={product._id}
+                                name={product.name}
+                                imgUrl={product.imageUrl}
+                                category={product.category.name}
+                                deleteProduct={deleteProduct}
                             />
                         );
                     })}

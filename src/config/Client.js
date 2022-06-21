@@ -6,7 +6,7 @@ const client = create({
     baseURL: baseUrl,
 });
 
-export const config = async () => {
+ const config = async () => {
     const token = localStorage.getItem('token');
     return {
         headers: {
@@ -15,7 +15,7 @@ export const config = async () => {
         },
     };
 };
-export const authConfig = async (token) => {
+ const authConfig = async (token) => {
     return {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export const authConfig = async (token) => {
     };
 };
 
-export const multipartConfig = async () => {
+ const multipartConfig = async () => {
     const token = localStorage.getItem('token');
     return {
         headers: {
@@ -34,4 +34,4 @@ export const multipartConfig = async () => {
     };
 };
 
-export default client;
+export {client,config,authConfig,multipartConfig};
