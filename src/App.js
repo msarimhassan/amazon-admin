@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Layout from './components/Layout';
@@ -10,14 +10,14 @@ import PageWrapper from './components/PageWrapper';
 import AuthRoutes from './common/AuthRoutes';
 import './index.css';
 import { client } from './config';
-import useAuth from './hooks/useAuth';
+    import Link from './common/Routes';
 
 export default function App() {
     const [showSidebar, setShowSidebar] = useState(false);
     const [token, setToken] = useState();
     console.log('statte token', token);
     const [userData, setUserData] = useState();
-    const { Logout } = useAuth();
+
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');

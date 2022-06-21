@@ -19,4 +19,9 @@ export const shop = [
         icon: <AI.AiOutlineShoppingCart size={iconSize} />,
         link: '/order',
     },
+    ,{
+        title:'Profile',
+        icon:<BI.BiUser size={iconSize} />,
+        link:'/shop/profile'
+    }
 ];

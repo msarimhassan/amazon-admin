@@ -9,6 +9,8 @@ import ShopPage from '../pages/Shop';
 import ShopForm from '../pages/Shop/ShopForm';
 import ProfilePage from '../pages/Profile';
 import ShopDashboard from '../pages/Shop/Dashboard';
+import ShopProfile from '../pages/Shop/Profile';
+import RequestTable from '.././pages/Requests/';
 import Routes from './Routes';
 const AppRoutes = [
     {
@@ -52,6 +54,13 @@ const AppRoutes = [
     {
         path:'/shop/dashboard',
         element:<ShopDashboard />
+    },
+    {
+       path:'/shop/profile',
+       element:<ShopProfile/>
+    },{
+        path:'/requests',
+        element:<RequestTable/>
     }
 ];
 

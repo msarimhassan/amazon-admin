@@ -11,4 +11,7 @@ export default {
     deleteProduct: 'shop/delete-product/',
     updateProduct: 'shop/update-product/',
     getsingleProduct: 'shop/get-product/',
+    getsingleShop: 'shop/myShop',
+    updateShop: 'shop/update-shop',
+    getRequests: 'admin/get-update-requests',
 };

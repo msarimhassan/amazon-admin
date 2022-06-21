@@ -28,6 +28,11 @@ export const superAdmin = [
         link: '/profile',
     },
     {
+        title: 'Requests',
+        icon: <BI.BiBell size={iconSize} />,
+        link: '/requests',
+    },
+    {
         title: 'Settings',
         icon: <AI.AiOutlineSetting size={iconSize} />,
         link: '/settings',

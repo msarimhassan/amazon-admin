@@ -6,13 +6,12 @@ export default function ({ id,name,imgUrl }) {
     console.log({id});
     }
 
-    const url = 'https://amazon-clone-12345.herokuapp.com/';
     return (
         <>
             <tr>
                 <td>{name}</td>
                 <td>
-                    <img src={url + imgUrl} style={{ width: '80px' }} />
+                    <img src={imgUrl} style={{ width: '80px' }} />
                 </td>
                 <td>
 
@@ -24,24 +23,3 @@ export default function ({ id,name,imgUrl }) {
         </>
     );
 }
-
-  {
-      /* <Link to={link + '/edit'}>
-                        <Button
-                            color='success'
-                            onClick={() => {
-                                console.log(id);
-                            }}
-                        >
-                            Edit
-                        </Button>
-                    </Link>{' '}
-                    <Button
-                        color='danger'
-                        onClick={() => {
-                            console.log(id);
-                        }}
-                    >
-                        Delete
-                    </Button> */
-  }
