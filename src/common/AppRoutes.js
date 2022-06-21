@@ -8,6 +8,7 @@ import SettingsPage from '../pages/Settings';
 import ShopPage from '../pages/Shop';
 import ShopForm from '../pages/Shop/ShopForm';
 import ProfilePage from '../pages/Profile';
+import ShopDashboard from '../pages/Shop/Dashboard';
 import Routes from './Routes';
 const AppRoutes = [
     {
@@ -49,7 +50,8 @@ const AppRoutes = [
         element:<ProfilePage />
     },
     {
-        path:'/shoprequest',
+        path:'/shop/dashboard',
+        element:<ShopDashboard />
     }
 ];
 

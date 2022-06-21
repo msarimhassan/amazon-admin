@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'reactstrap';
-import { Button } from 'reactstrap';
+import Loader from '../../assets/animations'
 import TableLayout from './Table/TableLayout';
 import { Network, Urls, config } from '../../config';
 
@@ -34,7 +34,7 @@ export default function ProductPage() {
             {/* <Button color='primary' className='mt-4' onClick={()=>navigate('/productpage/addproduct/create')}> */}
             <a href='/productpage/addproduct/create'>Add new Product</a>
 
-            {loading ? null : (
+            {loading ? <Loader/> : (
                 <TableLayout
                     HeaderData={HeaderData}
                     BodyData={products}

@@ -49,7 +49,7 @@ export default function Login() {
             console.log('Its a shop');
             const { token, shop } = response.data;
             Login(token, shop);
-             navigation(Routes.Homepage);
+             navigation(Routes.ShopDashboard);
         }
     };
 

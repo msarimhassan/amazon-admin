@@ -8,6 +8,7 @@ import { SuccessMessage } from '../../components/Notification';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Routes from '../../common/Routes';
+import Loader from '../../assets/animations';
 
 const initialValues = {
     name: '',
@@ -49,6 +50,7 @@ export default function ProductForm() {
         values.category = response.data.product.category;
         values.sellingPrice = response.data.product.sellingPrice;
         values.retailPrice = response.data.product.retailPrice;
+        values.description=response.data.product.description;
         setCategoryId({value:response.data.product.category._id,label:response.data.product.category.name});
         setLoading(false);
     };
@@ -77,7 +79,6 @@ export default function ProductForm() {
         formData.append('image', File);
         formData.append('description', data.description);
          if(mode=='edit'){
-            
             const response=await Network.put(Urls.updateProduct+location.state.id,formData,(await multipartConfig()).headers);
             console.log(response.data,'updated');
              navigate(Routes.productpage);
@@ -106,7 +107,7 @@ export default function ProductForm() {
     return (
         <>
             {loading ? (
-                <div className='loader'></div>
+               <Loader/>
             ) : (
                 <Form>
                     <ToastContainer />

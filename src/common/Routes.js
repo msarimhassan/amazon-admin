@@ -4,4 +4,5 @@ export default {
     Shophome: '/shophome',
     manageProduct: '/productpage/addproduct/:mode',
     productpage: '/productpage',
+    ShopDashboard:'/shop/dashboard',
 };
