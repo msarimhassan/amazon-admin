@@ -6,7 +6,6 @@ import Loader from '../../../assets/animations';
 const initialValues = {
     name: '',
     email: '',
-    password:'',
 };
 
 
@@ -16,17 +15,18 @@ const initialValues = {
 export default function ProfileForm() {
      
     const [loading,setLoading]=useState(false);
-    // useEffect(()=>{
-    //      GetShopProfile();
-    // },[])
+    useEffect(()=>{
+         GetShopProfile();
+    },[])
 
-    // const GetShopProfile = async() => {
-    //     setLoading(true);
-    //   const response=await Network.get(Urls.getsingleShop,(await config()).headers);
-    //    values.email=response.data.shop.email;
+    const GetShopProfile = async() => {
+        setLoading(true);
+      const response=await Network.get(Urls.getsingleShop,(await config()).headers);
+       values.email=response.data.shop.email;
+       values.name=response.data.shop.name;
 
-    //    setLoading(false);
-    // };
+       setLoading(false);
+    };
 
    const onSubmit=async(data)=>{
        console.log(data);
@@ -67,7 +67,7 @@ export default function ProfileForm() {
                           />
                       </Col>
                   </Row>
-                  <Row className='my-2'>
+                  {/* <Row className='my-2'>
                       <Col md={6} sm={12}>
                           <Label for='Password'>Password</Label>
                           <Input
@@ -77,8 +77,8 @@ export default function ProfileForm() {
                               onChange={handleChange}
                           />
                       </Col>
-                  </Row>
-                  <Button color='primary' onClick={handleSubmit}>
+                  </Row> */}
+                  <Button color='primary' onClick={handleSubmit} className='my-2'>
                       Update
                   </Button>
               </Form>

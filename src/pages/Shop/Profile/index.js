@@ -3,7 +3,7 @@ import ProfileForm from './ProfileForm'
 
 export default function ShopProfile() {
   return (
-    <div>ShopProfile
+    <div>
         <ProfileForm/>
     </div>
   )
