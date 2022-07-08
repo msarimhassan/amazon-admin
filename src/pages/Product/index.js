@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import Loader from '../../assets/animations'
 import TableLayout from './Table/TableLayout';
 import { Network, Urls, config } from '../../config';
+import i18next from 'i18next';
 
 import { useNavigate} from 'react-router-dom';
 export default function ProductPage() {
@@ -24,7 +25,7 @@ export default function ProductPage() {
     };
     const getProducts = async () => {
         setLoading(true);
-        const response = await Network.get(Urls.getProducts, (await config()).headers);
+        const response = await Network.get(Urls.getProducts(i18next.language), (await config()).headers);
         console.log(response.data.products);
         setProducts(response.data.products);
         setLoading(false);

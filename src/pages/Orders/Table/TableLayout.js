@@ -2,10 +2,8 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
-import i18next from 'i18next';
-export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
+export default function TableLayout({ HeaderData, BodyData}) {
 
-    console.log(BodyData);
     return (
         <>
             <Table bordered hover className='mt-4 table-responsive'>
@@ -17,7 +15,7 @@ export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {BodyData.map((product) => {
+                    {/* {BodyData.map((product) => {
                         return (
                             <TableRow
                                 key={product._id}
@@ -28,7 +26,7 @@ export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
                                 deleteProduct={deleteProduct}
                             />
                         );
-                    })}
+                    })} */}
                 </tbody>
             </Table>
         </>

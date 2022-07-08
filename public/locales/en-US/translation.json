@@ -1,0 +1,10 @@
+{
+    "new-category":"Add New Category",
+    "name":"Name",
+    "images":"Images",
+    "action":"Action",
+    "create-category":"Create Category",
+    "category-name":"Category Name",
+    "upload-image":"Upload Image", 
+    "submit":"Submit"
+}

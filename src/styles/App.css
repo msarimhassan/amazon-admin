@@ -13,6 +13,18 @@
     }
 } */
 
+@media (min-width: 320px) and (max-width: 425px) {
+    .login-btn{
+        width: 100%;
+    }
+    .stats-icons {
+            display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row-reverse;
+    }
+}
+
 @media only screen and (max-width: 768px){
     .Toggler{
         display: block;

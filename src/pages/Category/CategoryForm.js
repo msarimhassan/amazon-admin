@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import { Form, Col, Label, Input, FormText, Button, Row } from 'reactstrap';
 import { useFormik } from 'formik';
 import {Network,Urls,multipartConfig} from '../../config'
-
+import { useTranslation } from 'react-i18next';
 const initialValues = {
     name: '',
 };
 export default function CategoryForm() {
     const { mode } = useParams();
     const [file, setFile] = useState();
+    const {t} = useTranslation();
 
     const onSubmit = async(values) => {
         const formData = new FormData();
@@ -34,10 +35,10 @@ export default function CategoryForm() {
 
     return (
         <Form>
-            <h1 className='px-3'>Create Categories</h1>
+            <h1 className='px-3'>{t('create-category')}</h1>
             <Row>
                 <Col md={6} sm={12} className='px-4'>
-                    <Label for='CategoryName'>Category Name</Label>
+                    <Label for='CategoryName'>{t('category-name')}</Label>
                     <Input
                         type='text'
                         placeholder='Category Name'
@@ -47,7 +48,7 @@ export default function CategoryForm() {
                     />
                 </Col>
                 <Col md={6} sm={12} className='px-4'>
-                    <Label for='Uplaod Image'>Upload Image</Label>
+                    <Label for='Uplaod Image'>{t('upload-image') }</Label>
                     <Input type='file' name='file' onChange={handleImage} />
                     <FormText color='danger'>
                         (Required image resolution 400x400, image size 0.2mb)
@@ -57,7 +58,7 @@ export default function CategoryForm() {
             <Row>
                 <Col sm={12} className='px-4 mt-2'>
                     <Button color='primary' onClick={handleSubmit}>
-                        Submit
+                        {t('submit')}
                     </Button>
                 </Col>
             </Row>

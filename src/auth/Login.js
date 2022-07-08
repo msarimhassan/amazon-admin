@@ -4,11 +4,12 @@ import { Container, Row, Col, Label, Input, Button, Card } from 'reactstrap';
 import { useFormik } from 'formik';
 
 import { loginSchema } from '../validations';
-import {Network ,config,Urls} from '../config';
+import { Network, config, Urls } from '../config';
 import Loader from '../components/Loader';
 import useAuth from '../hooks/useAuth';
 import Routes from '../common/Routes';
 import Logo from '../assets/images/logo.png';
+import '../styles/App.css';
 
 const initialValues = {
     email: '',
@@ -17,13 +18,12 @@ const initialValues = {
 };
 
 export default function Login() {
-
     const [mode, setMode] = useState('');
     const [error, setError] = useState('');
     const [ApiError, setApiError] = useState('');
     const [loading, setLoading] = useState(false);
     const { Login } = useAuth();
-    const navigation=useNavigate();
+    const navigation = useNavigate();
     const onSubmit = async ({ email, password }) => {
         if (mode == '') {
             setError('Required');
@@ -34,7 +34,7 @@ export default function Login() {
         // console.log({ values });
         setLoading(true);
         const response = await Network.post(Urls.login + mode, values, (await config()).headers);
-        console.log({response})
+        console.log({ response });
         setLoading(false);
         if (!response.ok) {
             setApiError(response.data.error);
@@ -44,12 +44,12 @@ export default function Login() {
             const { token, superAdmin } = response.data;
             console.log(token);
             Login(token, superAdmin);
-             navigation(Routes.Homepage);
+            navigation(Routes.Homepage);
         } else if (mode == 'shop/login') {
             console.log('Its a shop');
             const { token, shop } = response.data;
             Login(token, shop);
-             navigation(Routes.ShopDashboard);
+            navigation(Routes.ShopDashboard);
         }
     };
 
@@ -57,7 +57,7 @@ export default function Login() {
         initialValues,
         onSubmit,
         validationSchema: loginSchema,
-    }); 
+    });
 
     const handleRadio = (e) => {
         const { name, value } = e.target;
@@ -69,7 +69,7 @@ export default function Login() {
             {loading ? (
                 <Loader />
             ) : (
-                <Container>
+                <Container style={{ marginTop: '130px' }}>
                     <Card
                         className='my-5 py-5 px-3'
                         style={{ boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px' }}
@@ -89,7 +89,7 @@ export default function Login() {
                             <Col lg={6}>
                                 <div>
                                     {ApiError && <div className='text-danger'>{ApiError}</div>}
-                                    <h2>Please sign-in to your account</h2>
+                                    <h2 className='text-center'>Please sign-in to your account</h2>
                                     <Row>
                                         <Col>
                                             <Label>Email</Label>
@@ -105,7 +105,7 @@ export default function Login() {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <Label>Password</Label>
+                                            <Label className='mt-2'>Password</Label>
                                             <Input
                                                 type='password'
                                                 name='password'
@@ -141,8 +141,12 @@ export default function Login() {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <Col className='my-3'>
-                                            <Button color='warning' onClick={handleSubmit}>
+                                        <Col className='my-3 '>
+                                            <Button
+                                                color='warning'
+                                                className='login-btn'
+                                                onClick={handleSubmit}
+                                            >
                                                 Login
                                             </Button>
                                         </Col>
