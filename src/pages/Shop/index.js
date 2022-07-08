@@ -23,10 +23,11 @@ import { Link } from 'react-router-dom';
 import TableLayout from './Table/TableLayout';
 import { Network, Urls, config } from '../../config';
 import Loader from '../../assets/animations';
-
+import { useTranslation } from 'react-i18next';
 export default function ShopPage() {
     const [shopList, setShopList] = useState();
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
     const getShopes = async () => {
         setLoading(true);
 
@@ -46,12 +47,12 @@ export default function ShopPage() {
         console.log(response.data);
     };
 
-    const HeaderData = ['Name', 'Email', 'Actions'];
+    const HeaderData = ['name', 'email', 'action'];
     return (
         <Container>
             <Link to='/shoppage/addshop/create'>
                 <Button color='primary' className='mt-4'>
-                    Add New Shop
+                    {t('new-shop')}
                 </Button>
             </Link>
             {loading ? (

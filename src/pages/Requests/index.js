@@ -3,7 +3,7 @@ import { Network,Urls,config } from '../../config';
 import TableLayout from './Table/TableLayout';
 import Loader from '../../assets/animations';
 
-const HeaderData=['Name','Email','Action'];
+const HeaderData=['name','email','action'];
 export default function RequestTable() {
 const [requests,setRequests]=useState([]);
 const [loading,setLoading]=useState(true);

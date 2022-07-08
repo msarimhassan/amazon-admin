@@ -10,9 +10,11 @@ import { client } from "../config"
 import UsaFlag from '../assets/usa-flag.svg';
 import FrenchFlag from '../assets/french-flag.svg';
 import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 export default function Header() {
      const{Logout}=useAuth();
-     let navigate=useNavigate();
+    let navigate = useNavigate();
+    const { t } = useTranslation();
     const {showSidebar,setSidebar} =  useTogglerContext();
 
     console.log(showSidebar);
@@ -69,7 +71,7 @@ export default function Header() {
                       </DropdownItem>
                   </DropdownMenu>
               </UncontrolledDropdown>
-              <Button onClick={() => handleLogout()}>Logout</Button>
+              <Button onClick={() => handleLogout()}>{t('logout')}</Button>
           </Navbar>
       </div>
   );

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import {Network,Urls,config} from '../../../config'
+import { Network, Urls, config } from '../../../config'
+import { useTranslation } from 'react-i18next';
 
-export default function ({id,name,email}) {
+export default function ({ id, name, email }) {
+    const { t } = useTranslation();
     const handleApprove=async(id)=>{
         const response=await Network.put(Urls.approveRequest+id,{},(await config()).headers);
-        console.log(response);
+        
     }
     return (
         <>
@@ -14,7 +16,7 @@ export default function ({id,name,email}) {
                 <td>{email}</td>
                 <td>
                     <Button className='mx-2' color='danger'>
-                        Delete
+                        {t('delete')}
                     </Button>
                     |
                     <Button
@@ -22,7 +24,7 @@ export default function ({id,name,email}) {
                         color='primary'
                         onClick={()=>handleApprove(id)}
                     >
-                        Approve
+                        {t('approve')}
                     </Button>
                 </td>
             </tr>

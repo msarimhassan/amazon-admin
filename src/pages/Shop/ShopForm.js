@@ -3,7 +3,7 @@ import { Row, Col, Form, Label, Input, Button } from 'reactstrap';
 import { Urls, config, Network } from '../../config';
 import Select from 'react-select';
 import { useFormik } from 'formik';
-
+import { useTranslation } from 'react-i18next';
 const initialValues = {
     name: '',
     email: '',
@@ -13,6 +13,7 @@ const initialValues = {
 export default function ShopForm() {
     const [roles, setRoles] = useState();
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
 
     const [mode, setMode] = useState([]);
     const onSubmit = async (values) => {
@@ -20,8 +21,6 @@ export default function ShopForm() {
         const obj = { ...values, role: mode.value };
         console.log(obj);
         const response = await Network.post(Urls.createShop, obj, (await config()).headers);
-
-        console.log(response.data);
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
         initialValues,
@@ -49,7 +48,7 @@ export default function ShopForm() {
         <Form>
             <Row>
                 <Col md={5} sm={12} className='mx-2'>
-                    <Label for='ShopName'>Shop Name</Label>
+                    <Label for='ShopName'>{t('shop-name') }</Label>
                     <Input
                         type='text'
                         placeholder='Shop Name'
@@ -59,7 +58,7 @@ export default function ShopForm() {
                     />
                 </Col>
                 <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
-                    <Label for='ShopName'>Email</Label>
+                    <Label for='ShopName'>{t('email') }</Label>
                     <Input
                         type='email'
                         placeholder='Enter Email'
@@ -71,7 +70,7 @@ export default function ShopForm() {
             </Row>
             <Row className='my-4'>
                 <Col md={5} sm={12} className='mx-2'>
-                    <Label for='ShopName'>Password</Label>
+                    <Label for='ShopName'>{t('password')}</Label>
                     <Input
                         type='password'
                         placeholder='Enter Password'
@@ -81,7 +80,7 @@ export default function ShopForm() {
                     />
                 </Col>
                 <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
-                    <Label for='Role'>Role</Label>
+                    <Label for='Role'>{t('role') }</Label>
                     <Select
                         onChange={setMode}
                        isDisabled={loading}
@@ -92,7 +91,7 @@ export default function ShopForm() {
             <Row>
                 <Col className='mx-2 mt-4'>
                     <Button color='primary' onClick={handleSubmit}>
-                        Create
+                        {t('create') }
                     </Button>
                 </Col>
             </Row>

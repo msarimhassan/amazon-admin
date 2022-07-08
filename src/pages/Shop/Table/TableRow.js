@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-export default function ({ id,name,email,handleDelete }) {
+export default function ({ id, name, email, handleDelete }) {
+    const { t } = useTranslation();
     return (
         <>
             <tr>
@@ -10,7 +12,7 @@ export default function ({ id,name,email,handleDelete }) {
                 <td>{name}</td>
                 <td>{email}</td>
                 <td>
-                  <Button color='danger' onClick={()=>handleDelete(id)}>Delete</Button>
+                    <Button color='danger' onClick={() => handleDelete(id)}>{t('delete')}</Button>
                 </td>
             </tr>
         </>

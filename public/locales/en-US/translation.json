@@ -6,5 +6,18 @@
     "create-category":"Create Category",
     "category-name":"Category Name",
     "upload-image":"Upload Image", 
-    "submit":"Submit"
+    "submit":"Submit",
+    "email":"Email",
+    "delete":"Delete",
+    "new-shop":"Add New Shop",
+    "shop-name":"Shop Name",
+    "password":"password",
+    "role":"Role",
+    "create":"Create",
+    "others":"Others",
+    "approve":"Approve",
+    "general-settings":"General Settings",
+    "logout":"Logout",
+    "stripe-public-key":"Stripe Public Key",
+    "stripe-private-key":"Stripe Private Key"
 }

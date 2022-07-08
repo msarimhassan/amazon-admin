@@ -4,6 +4,7 @@ import { Form, Col, Label, Input, FormText, Button, Row } from 'reactstrap';
 import { useFormik } from 'formik';
 import {Network,Urls,multipartConfig} from '../../config'
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 const initialValues = {
     name: '',
 };
@@ -18,7 +19,7 @@ export default function CategoryForm() {
         formData.append('name',values.name);
         formData.append('image',file);
 
-        const response=await Network.post(Urls.createCategory, formData, (await multipartConfig()).headers);
+        const response=await Network.post(Urls.createCategory(i18next.language), formData, (await multipartConfig()).headers);
 
         console.log({response});
 
