@@ -15,12 +15,12 @@ import { useFormik } from 'formik';
 import Select from 'react-select';
 import { Network, Urls, multipartConfig, config } from '../../config';
 import { SuccessMessage } from '../../components/Notification';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import Routes from '../../common/Routes';
 import Loader from '../../assets/animations';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+
 const initialValues = {
     name: '',
     quantity: '',
@@ -117,7 +117,15 @@ export default function ProductForm() {
                     await multipartConfig()
                 ).headers
             );
-            console.log(response.data, 'updated');
+            if (!response.ok) {
+                toast.error(response.data.error.message, {
+                    position: 'top-right',
+                });
+                return 
+            }
+             toast.success(response.data.message, {
+                 position: 'top-right',
+             });
             navigate(Routes.productpage);
             return;
         }
@@ -129,8 +137,15 @@ export default function ProductForm() {
                 await multipartConfig()
             ).headers
         );
-        console.log(response.data);
-        SuccessMessage(response.data.message);
+        if (!response.ok) {
+            toast.error(response.data.error.message, {
+                position: 'top-right',
+            });
+            return; 
+        }
+         toast.success(response.data.message, {
+             position: 'top-right',
+         });
         navigate(Routes.productpage);
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
@@ -147,7 +162,7 @@ export default function ProductForm() {
                 <Loader />
             ) : (
                 <Form>
-                    <ToastContainer />
+                   
                     <h1>{t('newProduct')}</h1>
 
                     <Label for='Name' className='mt-1'>

@@ -31,5 +31,7 @@
     "description":"Description",
     "more":"More",
     "update":"Update",
-    "manage-profile":"Manage Profile"
+    "manage-profile":"Manage Profile",
+    "order-id":"Order ID",
+    "product-name":"Product Name "
 }

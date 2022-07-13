@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 export default function TableLayout({ HeaderData, BodyData}) {
-
+    
     return (
         <>
             <Table bordered hover className='mt-4 table-responsive'>
@@ -15,18 +15,16 @@ export default function TableLayout({ HeaderData, BodyData}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {BodyData.map((product) => {
+                    {BodyData?.map((order) => {
                         return (
                             <TableRow
-                                key={product._id}
-                                id={product._id}
-                                name={product.name}
-                                imgUrl={product.imageUrl}
-                                category={product.category.name}
-                                deleteProduct={deleteProduct}
+                                key={order._id}
+                                id={order._id}
+                                name={order.productName}
+                                quantity={order.quantity}
                             />
                         );
-                    })} */}
+                    })}
                 </tbody>
             </Table>
         </>

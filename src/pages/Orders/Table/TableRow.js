@@ -1,26 +1,21 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 
-export default function () {
+export default function ({id,name,quantity}) {
 
     return (
         <>
             <tr>
-                <td>dummy</td>
-                <td>dummy</td>
+                <td>{id}</td>
+                <td>{name}</td>
                 <td>
-                   dummy
+                   {quantity}
                 </td>
                 <td>
-                    <Button className='mx-2' color='danger' >
-                        Delete
+                    <Button className='mx-2' color='primary' >
+                        Delivered
                     </Button>
-                    |
-                    <Button
-                        className='mx-2'
-                        color='primary'>
-                        Update
-                    </Button>
+                  
                 </td>
             </tr>
         </>

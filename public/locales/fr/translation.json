@@ -31,6 +31,8 @@
     "description":"La description",
     "more":"Suite",
     "update":"Mise à jour",
-    "manage-profile":"Gérer le profil"
+    "manage-profile":"Gérer le profil",
+    "order-id":"Numéro de commande",
+    "product-name":"Nom du produit"
 
 }

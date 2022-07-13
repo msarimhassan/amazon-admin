@@ -32,8 +32,8 @@ export default function ProductPage() {
     const getProducts = async (page) => {
         setLoading(true);
         const response = await Network.get(Urls.getProducts(i18next.language) +`?page=${page}&limit=10`, (await config()).headers);
-        console.log(response.data.products);
         setProducts(response.data.products);
+        setTotalPages(response.data.totalpages);
         setLoading(false);
     };
     return (
