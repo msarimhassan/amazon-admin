@@ -1,5 +1,5 @@
 import { Icons } from '../common';
-const { AI, RI, BI } = Icons;
+const { AI, RI, BI,BS } = Icons;
 
 const iconSize = 25;
 
@@ -7,7 +7,7 @@ export const shop = [
     {
         title: 'Dashboard',
         icon: <AI.AiOutlineHome size={iconSize} />,
-        link:'/shop/dashboard'
+        link: '/shop/dashboard',
     },
     {
         title: 'Products',
@@ -19,9 +19,15 @@ export const shop = [
         icon: <AI.AiOutlineShoppingCart size={iconSize} />,
         link: '/order',
     },
-    ,{
-        title:'Profile',
-        icon:<BI.BiUser size={iconSize} />,
-        link:'/shop/profile'
-    }
+    ,
+    {
+        title: 'Profile',
+        icon: <BI.BiUser size={iconSize} />,
+        link: '/shop/profile',
+    },
+    {
+        title: 'Chat',
+        icon: <BS.BsFillChatSquareDotsFill size={iconSize} />,
+        link: '/shop/chats',
+    },
 ];

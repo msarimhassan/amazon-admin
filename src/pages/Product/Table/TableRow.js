@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import i18next from 'i18next';
 
 export default function ({ id, name, category, deleteProduct, imgUrl }) {
-    console.log(name)
-  let navigate=useNavigate();
+    let navigate = useNavigate();
+    console.log(category);
     return (
         <>
             <tr>
-                {/* <td>{name}</td> */}
-                <td>{category}</td>
+                <td>{name}</td>
+                {/* <td>{i18next.language==='en-US'? category.name.fr : null}</td> */}
+                <td>"</td>
                 <td>
                     <img src={imgUrl} style={{ width: '100px' }} />
                 </td>

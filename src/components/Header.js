@@ -54,7 +54,7 @@ export default function Header() {
                   </Nav>
               </Collapse>
               <UncontrolledDropdown>
-                  <DropdownToggle nav caret style={{ color: 'white' }}>
+                  <DropdownToggle nav caret style={{ color: 'black' }}>
                       {i18next.language == 'en-US' ? (
                           <img src={UsaFlag} width='30px' height='25px' />
                       ) : (

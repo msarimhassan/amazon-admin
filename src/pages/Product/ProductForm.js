@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Routes from '../../common/Routes';
 import Loader from '../../assets/animations';
+import i18next from 'i18next';
 const initialValues = {
     name: '',
     quantity: '',
@@ -46,7 +47,7 @@ export default function ProductForm() {
         setLoading(true);
         console.log('Getvalues' + location.state.id);
         const response = await Network.get(
-            Urls.getsingleProduct + location.state.id,
+            Urls.getsingleProduct(i18next.language) + location.state.id,
             (
                 await config()
             ).headers
@@ -68,7 +69,7 @@ export default function ProductForm() {
     };
     const getCatogeries = async () => {
         setLoading(true);
-        const response = await Network.get(Urls.getCategories, (await config()).headers);
+        const response = await Network.get(Urls.getCategories(i18next.language), (await config()).headers);
         console.log(response.data.categories);
         const newarray = response.data.categories.map((element) => {
             return {
@@ -160,7 +161,7 @@ export default function ProductForm() {
                     <Label for='Category' className='mt-3'>
                         Category
                     </Label>
-                    <Select
+                    {/* <Select
                         className='mt-1'
                         onChange={setCategoryId}
                         options={categoryList}
@@ -170,7 +171,7 @@ export default function ProductForm() {
                                 ? categoryList.find((element) => element.value == categoryId.value)
                                 : categoryId
                         }
-                    />
+                    /> */}
 
                     <Label for='exampleFile' className='mt-3'>
                         Upload Image

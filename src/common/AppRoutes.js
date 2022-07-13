@@ -11,6 +11,7 @@ import ProfilePage from '../pages/Profile';
 import ShopDashboard from '../pages/Shop/Dashboard';
 import ShopProfile from '../pages/Shop/Profile';
 import RequestTable from '.././pages/Requests/';
+import Chat from '../pages/Shop/Chats';
 import Routes from './Routes';
 const AppRoutes = [
     {
@@ -61,6 +62,9 @@ const AppRoutes = [
     },{
         path:'/requests',
         element:<RequestTable/>
+    }, {
+        path: '/shop/chats',
+        element:<Chat/>
     }
 ];
 

@@ -10,7 +10,7 @@ export default {
     getProducts: (ln)=>`shop/${ln}/myProducts`,
     deleteProduct: 'shop/delete-product/',
     updateProduct: 'shop/update-product/',
-    getsingleProduct: 'shop/get-product/',
+    getsingleProduct:(ln)=>`shop/${ln}/get-product/`,
     getsingleShop: 'shop/myShop',
     updateShop: 'shop/update-shop',
     getRequests: 'admin/get-update-requests',
