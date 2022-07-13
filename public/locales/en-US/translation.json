@@ -28,5 +28,8 @@
     "additional-info":"Additional Information",
     "brand-name":"Brand Name",
     "features":"Features",
-    "description":"Description"
+    "description":"Description",
+    "more":"More",
+    "update":"Update",
+    "manage-profile":"Manage Profile"
 }

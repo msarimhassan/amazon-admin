@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route,useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Layout from './components/Layout';
@@ -10,7 +10,8 @@ import PageWrapper from './components/PageWrapper';
 import AuthRoutes from './common/AuthRoutes';
 import './index.css';
 import { client } from './config';
-    import Link from './common/Routes';
+import 'react-toastify/dist/ReactToastify.css';
+  import { ToastContainer } from 'react-toastify';
 
 export default function App() {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -33,6 +34,7 @@ export default function App() {
     return (
         <AuthContext.Provider value={{ token, setToken }}>
             <UserContext.Provider value={{ userData, setUserData }}>
+                <ToastContainer/>
                 {token ? (
                     <Router>
                         <TogglerContext.Provider value={{ showSidebar, setShowSidebar }}>

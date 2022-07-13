@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 export default function ({ id, name, category, deleteProduct, imgUrl }) {
     let navigate = useNavigate();
-    console.log(category);
+    const { t } = useTranslation();
     return (
         <>
             <tr>
@@ -16,7 +16,7 @@ export default function ({ id, name, category, deleteProduct, imgUrl }) {
                 </td>
                 <td>
                     <Button className='mx-2' color='danger' onClick={() => deleteProduct(id)}>
-                        Delete
+                        {t('delete')}
                     </Button>{' '}
                     |
                     <Button
@@ -28,7 +28,7 @@ export default function ({ id, name, category, deleteProduct, imgUrl }) {
                             })
                         }
                     >
-                        Update
+                        {t('update')}
                     </Button>
                 </td>
             </tr>

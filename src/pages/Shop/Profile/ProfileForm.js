@@ -1,19 +1,19 @@
 import React,{useEffect,useState} from 'react'
 import{Form,Button,Row,Col,Input,Label} from 'reactstrap'
-import { Network,config,Urls } from '../../../config';
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
+
+import { Network,config,Urls } from '../../../config';
 import Loader from '../../../assets/animations';
+
+
 const initialValues = {
     name: '',
     email: '',
 };
 
-
-
-
-
 export default function ProfileForm() {
-     
+    const {t} = useTranslation();
     const [loading,setLoading]=useState(false);
     useEffect(()=>{
          GetShopProfile();
@@ -46,10 +46,10 @@ export default function ProfileForm() {
               <Loader />
           ) : (
               <Form>
-                  <h1>Manage Profile</h1>
+                      <h1>{t('manage-profile') }</h1>
                   <Row>
                       <Col md={6} sm={12}>
-                          <Label for='name'>Name</Label>
+                              <Label for='name'>{t('name')}</Label>
                           <Input
                               name='name'
                               type='text'
@@ -58,7 +58,7 @@ export default function ProfileForm() {
                           />
                       </Col>
                       <Col md={6} sm={12}>
-                          <Label for='email'>Email</Label>
+                              <Label for='email'>{t('email') }</Label>
                           <Input
                               name='email'
                               type='email'
@@ -79,7 +79,7 @@ export default function ProfileForm() {
                       </Col>
                   </Row> */}
                   <Button color='primary' onClick={handleSubmit} className='my-2'>
-                      Update
+                      {t('update')}
                   </Button>
               </Form>
           )}

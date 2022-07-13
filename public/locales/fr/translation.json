@@ -28,6 +28,9 @@
     "additional-info":"Informations Complémentaires",
     "brand-name":"Marque",
     "features":"Fonctionnalités",
-    "description":"La description"
+    "description":"La description",
+    "more":"Suite",
+    "update":"Mise à jour",
+    "manage-profile":"Gérer le profil"
 
 }

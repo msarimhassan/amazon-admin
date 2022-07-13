@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Container,Button } from 'reactstrap';
-import Loader from '../../assets/animations'
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import Loader from '../../assets/animations';
 import TableLayout from './Table/TableLayout';
 import { Network, Urls, config } from '../../config';
-import i18next from 'i18next';
 
-import { useNavigate} from 'react-router-dom';
+
 export default function ProductPage() {
-    const HeaderData = ['Name', 'Category', 'Images', 'Actions'];
+    const HeaderData = ['name', 'category', 'images', 'action'];
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
      const [page, setPage] = useState(1);
      const [totalPages, setTotalPages] = useState(1);
-    let navigate=useNavigate();
+    let navigate = useNavigate();
+    const { t } = useTranslation();
     useEffect(() => {
         getProducts();
     }, []);
@@ -35,7 +39,7 @@ export default function ProductPage() {
     return (
         <Container>
             {/* <Button color='primary' className='mt-4' onClick={()=>navigate('/productpage/addproduct/create')}> */}
-            <a href='/productpage/addproduct/create'>Add new Product</a>
+            <a href='/productpage/addproduct/create'>{t('newProduct') }</a>
 
             {loading ? (
                 <Loader />
@@ -53,7 +57,7 @@ export default function ProductPage() {
                                 setPage(page + 1);
                             }}
                         >
-                            More
+                            {t('more')}
                         </Button>
                     )}
                 </>
