@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Network, Urls, config } from '../../../config';
 import ChatPopup from './ChatPopup';
 import Loader from '../../../assets/animations';
+import { Icons } from '../../../common';
 
 export default function Chat() {
     const [open, setOpen] = useState(false);
     const [conversations, setConversations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentChat, setCurrentChat] = useState({});
+    const { BS} = Icons;
 
     useEffect(() => {
         MyConversations();
@@ -34,9 +36,17 @@ export default function Chat() {
                     <>
                         <h1>Chat Rooms</h1>
                         {conversations?.map((conversation) => {
-                            return <div onClick={() => handleModal(conversation)}>
-                                {conversation.conversation.chatRoom}
-                            </div>;
+                            return (
+                                <div
+                                    className='chat-card'
+                                    onClick={() => handleModal(conversation)}
+                                >
+                                    <div className='p-3'>
+                                        <BS.BsFillChatFill size={30} color='#1E93B0' />
+                                    </div>
+                                    <div className='ms-3'> {conversation.conversation.chatRoom}</div>
+                                </div>
+                            );
                         })}
                     </>
                 )}
