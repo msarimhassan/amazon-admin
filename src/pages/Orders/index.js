@@ -4,7 +4,7 @@ import {Network,Urls,config} from '../../config'
 
 
 export default function OrderPage() {
-    const HeaderData=['#','Order Name','Type','Action'];
+    const HeaderData=['#','Order Name','Type','Action',"sarim"];
     const[order,setOrders]=useState([]);
 
     // useEffect(()=>{

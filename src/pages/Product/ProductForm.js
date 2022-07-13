@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { Form, Label, Input, Button, FormText,Accordion,AccordionBody,AccordionHeader,AccordionItem } from 'reactstrap';
+import {
+    Form,
+    Label,
+    Input,
+    Button,
+    FormText,
+    Accordion,
+    AccordionBody,
+    AccordionHeader,
+    AccordionItem,
+} from 'reactstrap';
 import { useFormik } from 'formik';
 import Select from 'react-select';
 import { Network, Urls, multipartConfig, config } from '../../config';
@@ -10,6 +20,7 @@ import { ToastContainer } from 'react-toastify';
 import Routes from '../../common/Routes';
 import Loader from '../../assets/animations';
 import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 const initialValues = {
     name: '',
     quantity: '',
@@ -30,6 +41,7 @@ export default function ProductForm() {
     let location = useLocation();
     let navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useTranslation();
     const handleToggle = ({}) => {
         console.log('Toggle');
         setIsOpen(!isOpen);
@@ -59,8 +71,8 @@ export default function ProductForm() {
         values.sellingPrice = response.data.product.sellingPrice;
         values.retailPrice = response.data.product.retailPrice;
         values.description = response.data.product.description;
-        values.brandName=response.data.product.brandName;
-        values.features=response.data.product.features;
+        values.brandName = response.data.product.brandName;
+        values.features = response.data.product.features;
         setCategoryId({
             value: response.data.product.category._id,
             label: response.data.product.category.name,
@@ -69,7 +81,12 @@ export default function ProductForm() {
     };
     const getCatogeries = async () => {
         setLoading(true);
-        const response = await Network.get(Urls.getCategories(i18next.language), (await config()).headers);
+        const response = await Network.get(
+            Urls.getCategories(i18next.language),
+            (
+                await config()
+            ).headers
+        );
         console.log(response.data.categories);
         const newarray = response.data.categories.map((element) => {
             return {
@@ -88,13 +105,13 @@ export default function ProductForm() {
         formData.append('sellingPrice', data.sellingPrice);
         formData.append('category', categoryId.value);
         formData.append('retailPrice', data.retailPrice);
-        formData.append('brandName',data.brandName);
-        formData.append('features',data.features);
+        formData.append('brandName', data.brandName);
+        formData.append('features', data.features);
         formData.append('image', File);
         formData.append('description', data.description);
         if (mode == 'edit') {
             const response = await Network.put(
-                Urls.updateProduct + location.state.id,
+                Urls.updateProduct(i18next.language) + location.state.id,
                 formData,
                 (
                     await multipartConfig()
@@ -106,7 +123,7 @@ export default function ProductForm() {
         }
 
         const response = await Network.post(
-            Urls.createProduct,
+            Urls.createProduct(i18next.language),
             formData,
             (
                 await multipartConfig()
@@ -115,7 +132,6 @@ export default function ProductForm() {
         console.log(response.data);
         SuccessMessage(response.data.message);
         navigate(Routes.productpage);
-        
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
         initialValues,
@@ -132,10 +148,10 @@ export default function ProductForm() {
             ) : (
                 <Form>
                     <ToastContainer />
-                    <h1>Add New Product</h1>
+                    <h1>{t('newProduct')}</h1>
 
                     <Label for='Name' className='mt-1'>
-                        Name
+                        {t('name')}
                     </Label>
                     <Input
                         className='mt-1'
@@ -147,7 +163,7 @@ export default function ProductForm() {
                     />
 
                     <Label for='Quantity' className='mt-3'>
-                        Quantity
+                        {t('quantity')}
                     </Label>
                     <Input
                         className='mt-1'
@@ -159,7 +175,7 @@ export default function ProductForm() {
                     />
 
                     <Label for='Category' className='mt-3'>
-                        Category
+                        {t('category')}
                     </Label>
                     <Select
                         className='mt-1'
@@ -174,7 +190,7 @@ export default function ProductForm() {
                     />
 
                     <Label for='exampleFile' className='mt-3'>
-                        Upload Image
+                        {t('upload-image')}
                     </Label>
                     <Input type='file' name='file' onChange={handleImage} className='mt-1' />
                     <FormText color='danger' className='mt-1'>
@@ -182,7 +198,7 @@ export default function ProductForm() {
                     </FormText>
                     <br />
                     <Label for='SellingPrice' className='mt-3'>
-                        Selling Price
+                        {t('selling-price')}
                     </Label>
                     <Input
                         className='mt-1'
@@ -193,7 +209,7 @@ export default function ProductForm() {
                         onChange={handleChange}
                     />
                     <Label for='retailPrice' className='mt-3'>
-                        Retail Price
+                        {t('retail-price')}
                     </Label>
                     <Input
                         className='mt-1'
@@ -212,16 +228,16 @@ export default function ProductForm() {
                         >
                             <AccordionItem>
                                 <AccordionHeader targetId='1' onClick={(e) => handleToggle(e)}>
-                                    Addition Information
+                                    {t('additional-info')}
                                 </AccordionHeader>
                                 <AccordionBody accordionId='1'>
-                                    <Label for='brandName'>Brand Name</Label>
+                                    <Label for='brandName'>{t('brand-name')}</Label>
                                     <Input
                                         name='brandName'
                                         value={values.brandName}
                                         onChange={handleChange}
                                     />
-                                    <Label for='features'>Features</Label>
+                                    <Label for='features'>{t('features')}</Label>
                                     <Input
                                         name='features'
                                         value={values.features}
@@ -231,8 +247,8 @@ export default function ProductForm() {
                             </AccordionItem>
                         </Accordion>
                     </div>
-                    <Label for='Description(English)' className='mt-3'>
-                        Description(English)
+                    <Label for='Description' className='mt-3'>
+                        {t('description')}
                     </Label>
                     <Input
                         className='mt-1'
@@ -241,14 +257,9 @@ export default function ProductForm() {
                         value={values.description}
                         onChange={handleChange}
                     />
-
-                    <Label for='Description(Spanish)' className='mt-3'>
-                        Description(Spanish)
-                    </Label>
-                    <Input type='textarea' name='text' id='exampleText' />
                     <br />
                     <Button color='primary' onClick={handleSubmit}>
-                        Submit
+                        {t('submit')}
                     </Button>
                 </Form>
             )}

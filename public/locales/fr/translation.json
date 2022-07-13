@@ -19,5 +19,15 @@
     "general-settings":"réglages généraux",
     "logout":"Se déconnecter",
     "stripe-public-key":"Clé publique Stripe",
-    "stripe-private-key":"Clé privée Stripe"
+    "stripe-private-key":"Clé privée Stripe",
+    "newProduct":"Ajouter un nouveau produit",
+    "quantity":"Quantité",
+    "category":"Catégorie",
+    "selling-price":"Prix ​​de vente",
+    "retail-price":"Prix ​​en détail",
+    "additional-info":"Informations Complémentaires",
+    "brand-name":"Marque",
+    "features":"Fonctionnalités",
+    "description":"La description"
+
 }

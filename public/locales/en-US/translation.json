@@ -19,5 +19,14 @@
     "general-settings":"General Settings",
     "logout":"Logout",
     "stripe-public-key":"Stripe Public Key",
-    "stripe-private-key":"Stripe Private Key"
+    "stripe-private-key":"Stripe Private Key",
+    "newProduct":"Add New Product",
+    "quantity":"Quantity",
+    "category":"Category",
+    "selling-price":"Selling Price",
+    "retail-price":"Retail Price",
+    "additional-info":"Additional Information",
+    "brand-name":"Brand Name",
+    "features":"Features",
+    "description":"Description"
 }

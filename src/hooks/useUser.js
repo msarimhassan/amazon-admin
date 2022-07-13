@@ -11,7 +11,7 @@ const useUser = () => {
 
     const removeUser = () => {
         setUserData(null);
-        window.localStorage.removeItem('userData');
+        localStorage.clear();
     };
 
     return { userData, setUser, setUserData, removeUser };
