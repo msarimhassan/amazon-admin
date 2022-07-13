@@ -2,3 +2,53 @@ body{
     margin: 0;
     padding: 0;
 }
+
+
+.send-btn {
+    background-color: #f5bb5c;
+    border-color: #f5bb5c;
+}
+
+.chat-list {
+    width: 38%;
+}
+
+.chat-screen {
+    width: 62%;
+    height: 100vh;
+}
+.user-message {
+
+    background-color: #1AF189;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: end;
+    width: 50%;
+    margin-top: 5px;
+
+}
+
+.shop-message {
+    background-color: #DEDEDE;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: start;
+}
+
+ .create-message {
+     position: fixed;
+     bottom: 0;
+     margin-bottom: 1%;
+     min-width: 50%;
+     margin-left: 1.5%;
+     width: 36%;
+
+ }
+
+ .message-input {
+     border-radius: 20px;
+ }

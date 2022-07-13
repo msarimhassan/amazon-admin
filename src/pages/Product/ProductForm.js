@@ -161,7 +161,7 @@ export default function ProductForm() {
                     <Label for='Category' className='mt-3'>
                         Category
                     </Label>
-                    {/* <Select
+                    <Select
                         className='mt-1'
                         onChange={setCategoryId}
                         options={categoryList}
@@ -171,7 +171,7 @@ export default function ProductForm() {
                                 ? categoryList.find((element) => element.value == categoryId.value)
                                 : categoryId
                         }
-                    /> */}
+                    />
 
                     <Label for='exampleFile' className='mt-3'>
                         Upload Image

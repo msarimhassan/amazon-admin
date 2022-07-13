@@ -10,8 +10,7 @@ export default function ({ id, name, category, deleteProduct, imgUrl }) {
         <>
             <tr>
                 <td>{name}</td>
-                {/* <td>{i18next.language==='en-US'? category.name.fr : null}</td> */}
-                <td>"</td>
+                <td>{category}</td>
                 <td>
                     <img src={imgUrl} style={{ width: '100px' }} />
                 </td>

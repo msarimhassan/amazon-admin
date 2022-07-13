@@ -3,8 +3,7 @@ import { Table } from 'reactstrap';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import i18next from 'i18next';
-export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
-
+export default function TableLayout({ HeaderData, BodyData, deleteProduct }) {
     console.log(BodyData);
     return (
         <>
@@ -24,7 +23,7 @@ export default function TableLayout({ HeaderData, BodyData ,deleteProduct}) {
                                 id={product._id}
                                 name={product.name}
                                 imgUrl={product.imageUrl}
-                                category={product.category.name}
+                                category={product.category}
                                 deleteProduct={deleteProduct}
                             />
                         );
