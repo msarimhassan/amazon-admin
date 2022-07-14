@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button,Badge } from 'reactstrap';
 import { Network, Urls, config } from '../../../config';
 import { toast } from 'react-toastify';
-export default function ({id,name,quantity}) {
+export default function ({id,name,quantity,status}) {
 
     const handleStatus=async(id) => {
         const response = await Network.put(Urls.updateOrder + id, {}, (await config()).headers);
@@ -18,14 +18,14 @@ export default function ({id,name,quantity}) {
             <tr>
                 <td>{id}</td>
                 <td>{name}</td>
+                <td>{quantity}</td>
                 <td>
-                   {quantity}
+                    <Badge color={status==='pending'?'danger':'success'}>{status}</Badge>
                 </td>
                 <td>
-                    <Button className='mx-2' color='primary' onClick={()=>handleStatus(id)} >
+                    <Button className='mx-2' color='primary' onClick={() => handleStatus(id)}>
                         Delivered
                     </Button>
-                  
                 </td>
             </tr>
         </>

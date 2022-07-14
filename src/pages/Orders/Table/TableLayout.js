@@ -22,6 +22,7 @@ export default function TableLayout({ HeaderData, BodyData}) {
                                 id={order._id}
                                 name={order.productName}
                                 quantity={order.quantity}
+                                status={order.orderStatus}
                             />
                         );
                     })}

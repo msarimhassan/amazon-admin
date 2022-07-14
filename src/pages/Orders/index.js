@@ -8,7 +8,7 @@ import i18next from 'i18next';
 
 
 export default function OrderPage() {
-  const HeaderData = ['order-id', 'product-name','quantity','action'];
+  const HeaderData = ['order-id', 'product-name','quantity','status','action'];
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
    const [page, setPage] = useState(1);
