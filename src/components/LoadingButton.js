@@ -1,24 +1,23 @@
 import React from 'react';
 import circleloader from '../assets/animations/circleloader.json';
-
+import Lottie from 'lottie-react';
 
 const Loader = () => {
     const mainDivStyles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        
     };
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: circleloader,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice',
-        },
-    };
+   
     return (
         <div style={mainDivStyles}>
-            <Lottie options={defaultOptions} style={{ width: '50px', height: '50px' }} />
+            <Lottie
+                animationData={circleloader}
+                autoplay
+                loop
+                style={{ width: '120px', height: '100px' }}
+            />
         </div>
     );
 };
@@ -28,7 +27,7 @@ const Loader = () => {
 
 export default function LoadingButton({ loading, text, type }) {
     return (
-        <button type={type}>
+        <button type={type} className={loading? 'loadingButton' :'txt-btn'}>
             {loading ? <Loader /> : text}
         </button>
     );

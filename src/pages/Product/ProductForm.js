@@ -14,13 +14,12 @@ import {
 import { useFormik } from 'formik';
 import Select from 'react-select';
 import { Network, Urls, multipartConfig, config } from '../../config';
-import { SuccessMessage } from '../../components/Notification';
 import { toast } from 'react-toastify';
 import Routes from '../../common/Routes';
 import Loader from '../../assets/animations';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-
+import LoadingButton from '../../components/LoadingButton';
 const initialValues = {
     name: '',
     quantity: '',
@@ -35,6 +34,7 @@ const initialValues = {
 export default function ProductForm() {
     const [categoryList, setCategoryList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingbtn, setLoadingbtn] = useState(false);
     const [categoryId, setCategoryId] = useState();
     const [File, setFile] = useState();
     const { mode } = useParams();
@@ -99,6 +99,7 @@ export default function ProductForm() {
     };
 
     const onSubmit = async (data) => {
+        setLoadingbtn(true);
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('quantity', data.quantity);
@@ -146,6 +147,7 @@ export default function ProductForm() {
          toast.success(response.data.message, {
              position: 'top-right',
          });
+        setLoadingbtn(false);
         navigate(Routes.productpage);
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
@@ -162,7 +164,6 @@ export default function ProductForm() {
                 <Loader />
             ) : (
                 <Form>
-                   
                     <h1>{t('newProduct')}</h1>
 
                     <Label for='Name' className='mt-1'>
@@ -273,9 +274,9 @@ export default function ProductForm() {
                         onChange={handleChange}
                     />
                     <br />
-                    <Button color='primary' onClick={handleSubmit}>
-                        {t('submit')}
-                    </Button>
+                    <div onClick={handleSubmit}>
+                        <LoadingButton loading={loadingbtn} text={t('submit')} type='submit' />
+                    </div>
                 </Form>
             )}
         </>
