@@ -33,5 +33,14 @@
     "update":"Update",
     "manage-profile":"Manage Profile",
     "order-id":"Order ID",
-    "product-name":"Product Name "
+    "product-name":"Product Name",
+    "Dashboard":"Dashboard",
+    "Shops":"Shops",
+    "Profile":"Profile",
+    "Requests":"Requests",
+    "Settings":"Settings",
+    "Products":"Products",
+    "Orders":"Orders",
+    "Chats":"Chats"
+
 }

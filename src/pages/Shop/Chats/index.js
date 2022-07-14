@@ -3,13 +3,15 @@ import { Network, Urls, config } from '../../../config';
 import ChatPopup from './ChatPopup';
 import Loader from '../../../assets/animations';
 import { Icons } from '../../../common';
+import { useTranslation } from 'react-i18next';
 
 export default function Chat() {
     const [open, setOpen] = useState(false);
     const [conversations, setConversations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentChat, setCurrentChat] = useState({});
-    const { BS} = Icons;
+    const { BS } = Icons;
+    const { t } = useTranslation();
 
     useEffect(() => {
         MyConversations();
@@ -34,7 +36,7 @@ export default function Chat() {
                     <Loader />
             ) : (
                     <>
-                        <h1>Chat Rooms</h1>
+                        <h1>{t('Chats')}</h1>
                         {conversations?.map((conversation) => {
                             return (
                                 <div

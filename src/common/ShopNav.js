@@ -26,7 +26,7 @@ export const shop = [
         link: '/shop/profile',
     },
     {
-        title: 'Chat',
+        title: 'Chats',
         icon: <BS.BsFillChatSquareDotsFill size={iconSize} />,
         link: '/shop/chats',
     },

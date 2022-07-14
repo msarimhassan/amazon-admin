@@ -3,13 +3,15 @@ import { superAdmin } from '../common/NavData';
 import { shop } from '../common/ShopNav';
 import '../styles/Sidebar.css';
 import { NavLink } from 'react-router-dom';
-import  useTogglerContext  from '../hooks/useTogglerContext';
+import useTogglerContext from '../hooks/useTogglerContext';
+import { useTranslation } from 'react-i18next';
 
 export default function Sidebar() {
     const { showSidebar } = useTogglerContext();
     const [selected, setSelected] = useState(null);
     const user= JSON.parse(localStorage.getItem('userData'));
-    const {name}=user.role;
+    const { name } = user.role;
+    const { t } = useTranslation();
   console.log(name);
     const Row = ({ icon, title, link }) => {
         return (
@@ -38,7 +40,7 @@ export default function Sidebar() {
                             : 'title w-100 text-black'
                     }
                 >
-                    <div>{title}</div>
+                    <div>{t(title)}</div>
                 </div>
             </NavLink>
         );

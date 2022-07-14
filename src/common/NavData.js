@@ -11,7 +11,7 @@ export const superAdmin = [
         link: '/',
     },
     {
-        title: 'Category',
+        title: 'category',
         icon: <BI.BiCategory size={iconSize} />,
         link: '/categorypage',
     },

@@ -34,7 +34,7 @@ export default function OrderPage() {
     
   return (
       <div>
-          <h1>Orders</h1>
+          <h1>{t('Orders') }</h1>
           {loading ? (
               <Loader />
           ) : (

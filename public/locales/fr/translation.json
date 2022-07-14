@@ -33,6 +33,14 @@
     "update":"Mise à jour",
     "manage-profile":"Gérer le profil",
     "order-id":"Numéro de commande",
-    "product-name":"Nom du produit"
+    "product-name":"Nom du produit",
+    "Dashboard":"Tableau de bord",
+    "Shops":"Magasins",
+    "Profile":"Profil",
+    "Requests":"Demandes",
+    "Settings":"Réglages",
+    "Products":"Des produits",
+    "Orders":"Ordres",
+    "Chats":"Discuter"
 
 }
