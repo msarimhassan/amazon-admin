@@ -4,6 +4,7 @@ import ChatPopup from './ChatPopup';
 import Loader from '../../../assets/animations';
 import { Icons } from '../../../common';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 export default function Chat() {
     const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Chat() {
 
     const MyConversations = async () => {
         setLoading(true);
-        const response = await Network.get(Urls.getMyConversation, (await config()).headers);
+        const response = await Network.get(Urls.getMyConversation(i18next.language), (await config()).headers);
         console.log(response.data);
         setConversations(response.data.conversations);
         setLoading(false);
@@ -44,9 +45,16 @@ export default function Chat() {
                                     onClick={() => handleModal(conversation)}
                                 >
                                     <div className='p-3'>
-                                        <BS.BsFillChatFill size={30} color='#1E93B0' />
+                                        <img
+                                            src={conversation.productImage}
+                                            style={{ width: '50px', objectFit: 'cover' }}
+                                            className='rounded-circle shadow-4'
+                                        />
                                     </div>
-                                    <div className='ms-3'> {conversation.conversation.chatRoom}</div>
+                                    <div className='ms-3'>
+                                        <h5>{conversation.productName}</h5>
+                                        {conversation.conversation.chatRoom}
+                                    </div>
                                 </div>
                             );
                         })}

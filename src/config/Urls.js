@@ -16,7 +16,7 @@ export default {
     getRequests: 'admin/get-update-requests',
     approveRequest: 'admin/update-shop/',
     getOrders: (ln) => `shop/${ln}/orders`,
-    getMyConversation: 'shop/conversations',
+    getMyConversation: (ln)=>`shop/${ln}/conversations`,
     getMessages: 'customer/get-messages/',
     sendMessage: 'customer/send-message',
     updateOrder: 'shop/update-order-status/',

@@ -20,6 +20,7 @@ export default function TableLayout({ HeaderData, BodyData}) {
                             <TableRow
                                 key={order._id}
                                 id={order._id}
+                                orderId={order.orderId}
                                 name={order.productName}
                                 quantity={order.quantity}
                                 status={order.orderStatus}
