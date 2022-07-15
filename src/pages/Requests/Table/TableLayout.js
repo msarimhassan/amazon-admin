@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import { useTranslation } from 'react-i18next';
-export default function TableLayout({ HeaderData, BodyData}) {
+export default function TableLayout({ HeaderData, BodyData,handleApprove,deleteRequest}) {
     const { t } = useTranslation();
     return (
         <>
@@ -22,7 +22,9 @@ export default function TableLayout({ HeaderData, BodyData}) {
                                 key={request._id}
                                 id={request._id}
                                 name={request.name}
-                               email={request.email}
+                                email={request.email}
+                                handleApprove={handleApprove}
+                                deleteRequest={deleteRequest}
                             />
                         );
                     })}

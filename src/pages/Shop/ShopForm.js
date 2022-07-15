@@ -6,8 +6,9 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import Routes from '../../common/Routes';
-import { useLocation, useNavigate,useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import LoadingButton from '../../components/LoadingButton';
+import Loader from '../../assets/animations';
 const initialValues = {
     name: '',
     email: '',
@@ -24,15 +25,24 @@ export default function ShopForm() {
     const location = useLocation();
     const [mode, setMode] = useState([]);
     const onSubmit = async (values) => {
-        setLoadingBtn(true)
+        setLoadingBtn(true);
         const obj = { ...values, role: mode.value };
+        if (formMode.mode === 'edit')
+        {
+            const response = await Network.put(Urls.adminUpdateShop + location.state.id, obj, (await config()).headers);
+              if (!response.ok) {
+                  return toast.error(response.data.error, { position: 'top-right' });
+              }
+              toast.success(response.data.message, { position: 'top-right' });
+            navigate(Routes.shop);
+            return
+            }
         const response = await Network.post(Urls.createShop, obj, (await config()).headers);
         setLoadingBtn(false);
-        if (!response.ok)
-        {
-            return toast.error(response.data.error,{position:"top-right"});
+        if (!response.ok) {
+            return toast.error(response.data.error, { position: 'top-right' });
         }
-        toast.success(response.data.message, { position: "top-right" });
+        toast.success(response.data.message, { position: 'top-right' });
         navigate(Routes.shop);
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
@@ -44,21 +54,22 @@ export default function ShopForm() {
     }, []);
 
     useEffect(() => {
-        if (formMode.mode === 'edit')
-        {
-           
-       }
-    }, [])
-    
-    // const GetShop =async() => {
-    //     const response=Network.get()
-    // }
+        if (formMode.mode === 'edit') {
+            GetShop();
+        }
+    }, []);
+
+    const GetShop = async () => {
+        setLoading(true);
+        const response = await Network.get(Urls.getShop + location.state.id, (await config()).headers);
+        values.name = response.data.shop.name
+        values.email=response.data.shop.email
+        setLoading(false);
+    }
 
     const getRoles = async () => {
         setLoading(true);
         const response = await Network.get(Urls.getRoles, (await config()).headers);
-        setLoading(false);
-
         const newarray = response.data.roles.map((element) => {
             return {
                 label: element.name,
@@ -66,60 +77,70 @@ export default function ShopForm() {
             };
         });
         setRoles(newarray);
+        setLoading(false);
     };
 
     return (
-        <Form>
-            <Row>
-                <Col md={5} sm={12} className='mx-2'>
-                    <Label for='ShopName'>{t('shop-name') }</Label>
-                    <Input
-                        type='text'
-                        placeholder='Shop Name'
-                        name='name'
-                        value={values.name}
-                        onChange={handleChange}
-                    />
-                </Col>
-                <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
-                    <Label for='ShopName'>{t('email') }</Label>
-                    <Input
-                        type='email'
-                        placeholder='Enter Email'
-                        name='email'
-                        value={values.email}
-                        onChange={handleChange}
-                    />
-                </Col>
-            </Row>
-            <Row className='my-4'>
-                <Col md={5} sm={12} className='mx-2'>
-                    <Label for='ShopName'>{t('password')}</Label>
-                    <Input
-                        type='password'
-                        placeholder='Enter Password'
-                        name='password'
-                        value={values.password}
-                        onChange={handleChange}
-                    />
-                </Col>
-                <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
-                    <Label for='Role'>{t('role') }</Label>
-                    <Select
-                        onChange={setMode}
-                       isDisabled={loading}
-                        options={roles}
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <Col className='mx-2 mt-4'>
-                    <div onClick={handleSubmit}>
-                        <LoadingButton text={t('create')} type='submit' loading={loadingbtn}
-                        />
-                    </div>
-                </Col>
-            </Row>
-        </Form>
+        <>
+            {loading ? (
+                <Loader />
+            ) : (
+                <Form>
+                    <Row>
+                        <Col md={5} sm={12} className='mx-2'>
+                            <Label for='ShopName'>{t('shop-name')}</Label>
+                            <Input
+                                type='text'
+                                placeholder='Shop Name'
+                                name='name'
+                                value={values.name}
+                                onChange={handleChange}
+                            />
+                        </Col>
+                        <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
+                            <Label for='ShopName'>{t('email')}</Label>
+                            <Input
+                                type='email'
+                                placeholder='Enter Email'
+                                name='email'
+                                value={values.email}
+                                onChange={handleChange}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className='my-4'>
+                        <Col md={5} sm={12} className='mx-2'>
+                            <Label for='ShopName'>{t('password')}</Label>
+                            <Input
+                                type='password'
+                                placeholder='Enter Password'
+                                name='password'
+                                value={values.password}
+                                onChange={handleChange}
+                            />
+                        </Col>
+                        <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
+                            <Label for='Role'>{t('role')}</Label>
+                            <Select
+                                isDisabled={true}
+                                options={roles}
+                                value={roles?.find((element) => element.label == 'Shop')}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className='mx-2 mt-4'>
+                            <div onClick={handleSubmit}>
+                                <LoadingButton
+                                    text={t('create')}
+                                    type='submit'
+                                    loading={loadingbtn}
+                                />
+                            </div>
+                        </Col>
+                    </Row>
+                </Form>
+            )}
+        </>
     );
 }
