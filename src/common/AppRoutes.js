@@ -12,6 +12,7 @@ import ShopDashboard from '../pages/Shop/Dashboard';
 import ShopProfile from '../pages/Shop/Profile';
 import RequestTable from '.././pages/Requests/';
 import Chat from '../pages/Shop/Chats';
+import PageNotFound from '../components/PageNotFound';
 import Routes from './Routes';
 const AppRoutes = [
     {
@@ -65,6 +66,10 @@ const AppRoutes = [
     }, {
         path: '/shop/chats',
         element:<Chat/>
+    },
+    {
+        path: '/*',
+        element:<PageNotFound/>
     }
 ];
 

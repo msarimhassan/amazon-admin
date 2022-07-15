@@ -28,9 +28,6 @@ export default function App() {
             setUserData(user);
         }
     }, []);
-    client.addMonitor((res) => {
-        console.log({ res });
-    });
     return (
         <AuthContext.Provider value={{ token, setToken }}>
             <UserContext.Provider value={{ userData, setUserData }}>
