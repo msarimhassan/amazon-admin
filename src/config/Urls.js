@@ -16,8 +16,10 @@ export default {
     getRequests: 'admin/get-update-requests',
     approveRequest: 'admin/update-shop/',
     getOrders: (ln) => `shop/${ln}/orders`,
-    getMyConversation: (ln)=>`shop/${ln}/conversations`,
+    getMyConversation: (ln) => `shop/${ln}/conversations`,
     getMessages: 'customer/get-messages/',
     sendMessage: 'customer/send-message',
     updateOrder: 'shop/update-order-status/',
+    getsingleCategory: (ln) => `admin/${ln}/get-category/`,
+    updateCategory: (ln) => `admin/${ln}/update-category/`,
 };

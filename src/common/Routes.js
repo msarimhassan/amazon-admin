@@ -7,4 +7,5 @@ export default {
     ShopDashboard: '/shop/dashboard',
     CategoryPage: '/categorypage',
     manageCategory: '/categorypage/addcategory/:mode',
+    shop: '/shops',
 };

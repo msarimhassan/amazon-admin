@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Form, Label, Input, Button } from 'reactstrap';
+import { Row, Col, Form, Label, Input } from 'reactstrap';
 import { Urls, config, Network } from '../../config';
 import Select from 'react-select';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import Routes from '../../common/Routes';
+import { useLocation, useNavigate,useParams } from 'react-router-dom';
+import LoadingButton from '../../components/LoadingButton';
 const initialValues = {
     name: '',
     email: '',
@@ -13,14 +17,23 @@ const initialValues = {
 export default function ShopForm() {
     const [roles, setRoles] = useState();
     const [loading, setLoading] = useState(true);
+    const [loadingbtn, setLoadingBtn] = useState(false);
     const { t } = useTranslation();
-
+    const navigate = useNavigate();
+    const formMode = useParams();
+    const location = useLocation();
     const [mode, setMode] = useState([]);
     const onSubmit = async (values) => {
-        console.log(values);
+        setLoadingBtn(true)
         const obj = { ...values, role: mode.value };
-        console.log(obj);
         const response = await Network.post(Urls.createShop, obj, (await config()).headers);
+        setLoadingBtn(false);
+        if (!response.ok)
+        {
+            return toast.error(response.data.error,{position:"top-right"});
+        }
+        toast.success(response.data.message, { position: "top-right" });
+        navigate(Routes.shop);
     };
     const { values, handleChange, handleSubmit, errors } = useFormik({
         initialValues,
@@ -29,6 +42,17 @@ export default function ShopForm() {
     useEffect(() => {
         getRoles();
     }, []);
+
+    useEffect(() => {
+        if (formMode.mode === 'edit')
+        {
+           
+       }
+    }, [])
+    
+    // const GetShop =async() => {
+    //     const response=Network.get()
+    // }
 
     const getRoles = async () => {
         setLoading(true);
@@ -90,9 +114,10 @@ export default function ShopForm() {
             </Row>
             <Row>
                 <Col className='mx-2 mt-4'>
-                    <Button color='primary' onClick={handleSubmit}>
-                        {t('create') }
-                    </Button>
+                    <div onClick={handleSubmit}>
+                        <LoadingButton text={t('create')} type='submit' loading={loadingbtn}
+                        />
+                    </div>
                 </Col>
             </Row>
         </Form>
