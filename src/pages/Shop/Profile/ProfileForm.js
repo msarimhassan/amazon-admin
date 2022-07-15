@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Network,config,Urls } from '../../../config';
 import Loader from '../../../assets/animations';
+import { toast } from 'react-toastify';
 
 
 const initialValues = {
@@ -32,7 +33,11 @@ export default function ProfileForm() {
        console.log(data);
 
        const response=await Network.post(Urls.updateShop,data,(await config()).headers);
-       console.log(response.data);
+       if (!response.ok)
+       {
+           return toast.error(response.data.error,{position:"top-right"})
+       }
+       toast.success(response.data.message, { position: "top-right" });
    }
 
 
