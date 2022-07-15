@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { Network, Urls, config } from '../../../config'
 import { useTranslation } from 'react-i18next';
 
-export default function ({ id, name, email,handleApprove,deleteRequest }) {
+export default function ({ id, name, email,handleApprove,deleteRequest,shopId }) {
     const { t } = useTranslation();
 
     return (
@@ -19,7 +19,7 @@ export default function ({ id, name, email,handleApprove,deleteRequest }) {
                     <Button
                         className='mx-2'
                         color='primary'
-                        onClick={()=>handleApprove(id)}
+                        onClick={()=>handleApprove(shopId)}
                     >
                         {t('approve')}
                     </Button>

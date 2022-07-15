@@ -13,8 +13,10 @@ export default function RequestTable() {
     }, []);
 
     const handleApprove = async (id) => {
-          const data = requests.filter((request) => request._id !== id);
-      const response = await Network.put(Urls.approveRequest + id, (await config()).headers);
+        console.log('upadte', id);
+        const data = requests.filter((request) => request._id !== id);
+        setRequests(data);
+        const response = await Network.put(Urls.approveRequest + id,{ },(await config()).headers);
        if (!response.ok) {
             return toast.error(response.data.error, { position: 'top-right' });
         }
@@ -22,11 +24,11 @@ export default function RequestTable() {
         toast.success(response.data.message, {
             position: 'top-right',
         });
-        setRequests(data)
+        
     };
 
     const deleteRequest = async (id) => {
-         const data = requests.filter((request) => request._id !== id);
+         const data = requests.filter((request) => request.shopId!== id);
         const response = await Network.delete(
             Urls.deleteRequest + id,
             {},

@@ -25,6 +25,7 @@ export default function TableLayout({ HeaderData, BodyData,handleApprove,deleteR
                                 email={request.email}
                                 handleApprove={handleApprove}
                                 deleteRequest={deleteRequest}
+                                shopId={request.shopId}
                             />
                         );
                     })}

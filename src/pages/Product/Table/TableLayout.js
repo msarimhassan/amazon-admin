@@ -16,7 +16,7 @@ export default function TableLayout({ HeaderData, BodyData, deleteProduct }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {BodyData.map((product) => {
+                    {BodyData?.map((product) => {
                         return (
                             <TableRow
                                 key={product._id}

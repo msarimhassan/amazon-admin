@@ -76,6 +76,8 @@ export default function ShopForm() {
                 value: element._id,
             };
         });
+        const obj = newarray.find((element) => element.label === 'Shop');
+        setMode(obj);
         setRoles(newarray);
         setLoading(false);
     };
