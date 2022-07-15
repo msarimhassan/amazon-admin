@@ -25,4 +25,5 @@ export default {
     updateCategory: (ln) => `admin/${ln}/update-category/`,
     getShop: 'shops/get-single-shop/',
     adminUpdateShop: 'admin/shop-update',
+    getCode: 'shop/send-code',
 };

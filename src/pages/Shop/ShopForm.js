@@ -14,7 +14,7 @@ const initialValues = {
     email: '',
     password: '',
     latitude: '',
-    longitude:'',
+    longitude: '',
 };
 
 export default function ShopForm() {
@@ -29,18 +29,23 @@ export default function ShopForm() {
     const onSubmit = async (values) => {
         setLoadingBtn(true);
         const obj = { ...values, role: mode.value };
-        if (formMode.mode === 'edit')
-        {
-             const obj2 = { ...values, role: mode.value,id:location.state.id };
-            
-            const response = await Network.put(Urls.adminUpdateShop, obj2, (await config()).headers);
-              if (!response.ok) {
-                  return toast.error(response.data.error, { position: 'top-right' });
-              }
-              toast.success(response.data.message, { position: 'top-right' });
-            navigate(Routes.shop);
-            return
+        if (formMode.mode === 'edit') {
+            const obj2 = { ...values, role: mode.value, id: location.state.id };
+
+            const response = await Network.put(
+                Urls.adminUpdateShop,
+                obj2,
+                (
+                    await config()
+                ).headers
+            );
+            if (!response.ok) {
+                return toast.error(response.data.error, { position: 'top-right' });
             }
+            toast.success(response.data.message, { position: 'top-right' });
+            navigate(Routes.shop);
+            return;
+        }
         const response = await Network.post(Urls.createShop, obj, (await config()).headers);
         setLoadingBtn(false);
         if (!response.ok) {
@@ -65,11 +70,18 @@ export default function ShopForm() {
 
     const GetShop = async () => {
         setLoading(true);
-        const response = await Network.get(Urls.getShop + location.state.id, (await config()).headers);
-        values.name = response.data.shop.name
-        values.email=response.data.shop.email
-        setLoading(false);
-    }
+        const response = await Network.get(
+            Urls.getShop + location.state.id,
+            (
+                await config()
+            ).headers
+        );
+        values.name = response.data.shop.name;
+        values.email = response.data.shop.email;
+        values.longitude = response.data.shop.longitude
+        values.latitude = response.data.shop.latitude
+            setLoading(false);
+    };
 
     const getRoles = async () => {
         setLoading(true);
@@ -160,7 +172,7 @@ export default function ShopForm() {
                         <Col className='mx-2 mt-4'>
                             <div onClick={handleSubmit}>
                                 <LoadingButton
-                                    text={t('create')}
+                                    text={t(formMode.mode==='edit'?'update':'create')}
                                     type='submit'
                                     loading={loadingbtn}
                                 />

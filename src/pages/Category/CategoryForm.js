@@ -39,10 +39,15 @@ export default function CategoryForm() {
     };
     const onSubmit = async (values) => {
         setLoading(true);
+        console.log({ values });
+        console.log({ file });
         const formData = new FormData();
 
         formData.append('name', values.name);
-        formData.append('image', file);
+        if (file) {
+            formData.append('image', file);
+        }
+       
         if (mode === 'edit') {
             const response = await Network.put(
                 Urls.updateCategory(i18next.language) + location.state.id,
@@ -52,6 +57,7 @@ export default function CategoryForm() {
                 ).headers
             );
             if (!response.ok) {
+                 setLoading(false);
                 return toast.error(response.data.error, { position: 'top-right' });
             }
             setLoading(false);

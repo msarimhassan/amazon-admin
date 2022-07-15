@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { Container, Row, Col, Label, Input, Button, Card } from 'reactstrap';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
@@ -109,6 +109,9 @@ export default function Login() {
                                     />
                                     <span style={{ color: 'red' }}>{errors['password']}</span>
                                 </Col>
+                                <div>
+                                    <Link to={Routes.getCode} >Forgetpassword?</Link>
+                                    </div>
                             </Row>
                             <Row>
                                 <Col className='my-3'>

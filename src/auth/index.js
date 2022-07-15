@@ -1,4 +1,5 @@
 import Login from "./Login";
+import Code from './Code';
 
 
-export{Login};
+export{Login,Code};
