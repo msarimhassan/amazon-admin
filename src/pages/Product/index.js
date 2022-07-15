@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container,Button } from 'reactstrap';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import Loader from '../../assets/animations';
 import TableLayout from './Table/TableLayout';
@@ -15,19 +15,23 @@ export default function ProductPage() {
     const [loading, setLoading] = useState(true);
      const [page, setPage] = useState(1);
      const [totalPages, setTotalPages] = useState(1);
-    let navigate = useNavigate();
+  
     const { t } = useTranslation();
     useEffect(() => {
         getProducts();
     }, []);
 
     const deleteProduct = async (id) => {
-        console.log(id);
+      
         const arry = products.filter((product) => product._id !== id);
         setProducts(arry);
         console.log(Urls.deleteProduct + id);
         const response = await Network.delete(Urls.deleteProduct + id, {}, (await config()).headers);
-        console.log(response.data);
+        if (!response.ok)
+        {
+            return toast.error(response.data.error, { position: "top-right" });
+        }
+         toast.success(response.data.message, { position: "top-right" });
     };
     const getProducts = async (page) => {
         setLoading(true);
