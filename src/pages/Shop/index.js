@@ -1,22 +1,3 @@
-// import React from 'react'
-// import { Container,Button } from 'reactstrap'
-// import TableLayout from '../../components/TableLayout'
-// import { ShopData } from '../../common/ShopData'
-// import { Link } from 'react-router-dom'
-// export default function ShopPage() {
-//     const HeaderData=['#','Name','Type','Action']
-//   return (
-//       <Container>
-//           <Link to='/shoppage/addshop/create'>
-//               <Button color='primary' className='mt-4'>
-//                   Add New Shop
-//               </Button>
-//           </Link>
-//           <TableLayout HeaderData={HeaderData} BodyData={ShopData} />
-//       </Container>
-//   );
-// }
-
 import React, { useEffect, useState } from 'react';
 import { Container, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -24,6 +5,7 @@ import TableLayout from './Table/TableLayout';
 import { Network, Urls, config } from '../../config';
 import Loader from '../../assets/animations';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 export default function ShopPage() {
     const [shopList, setShopList] = useState();
     const [loading, setLoading] = useState(true);
@@ -39,12 +21,14 @@ export default function ShopPage() {
         getShopes();
     }, []);
 
-    const handleDelete = async(id) => {
-        console.log(id);
-          const arry=shopList.filter(shop=>shop._id!==id);
-          setShopList(arry);
-        const response=await Network.delete(Urls.deleteShop+id,{},(await config()).headers);
-        console.log(response.data);
+    const handleDelete = async (id) => {
+        const arry = shopList.filter((shop) => shop._id !== id);
+        setShopList(arry);
+        const response = await Network.delete(Urls.deleteShop + id, {}, (await config()).headers);
+        if (!response.ok) {
+            return toast.error(response.data.error, { position: 'top-right' });
+        }
+        toast.success(response.data.message, { position: "top-right" });
     };
 
     const HeaderData = ['name', 'email', 'action'];
