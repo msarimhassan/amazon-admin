@@ -32,7 +32,7 @@ export default function CategoryPage() {
                     </Button>
                 </Link>
             </Container>
-           {loading?null:<TableLayout HeaderData={HeaderData} BodyData={categories}/>}
+           {loading?<Loader/>:<TableLayout HeaderData={HeaderData} BodyData={categories}/>}
         </div>
     );
 }

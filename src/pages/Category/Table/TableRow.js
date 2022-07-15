@@ -1,10 +1,9 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 
-export default function ({ id,name,imgUrl }) {
-    const handleUpdate=(id)=>{
-    console.log({id});
-    }
+export default function ({ id, name, imgUrl }) {
+    const navigate = useNavigate();
 
     return (
         <>
@@ -15,7 +14,7 @@ export default function ({ id,name,imgUrl }) {
                 </td>
                 <td>
 
-                    <Button className='mx-2' color='primary' onClick={() => handleUpdate(id)}>
+                    <Button className='mx-2' color='primary' onClick={() => navigate('/categorypage/addcategory/edit',{state:{id:id}})}>
                         Update 
                     </Button>
                 </td>
