@@ -13,6 +13,8 @@ const initialValues = {
     name: '',
     email: '',
     password: '',
+    latitude: '',
+    longitude:'',
 };
 
 export default function ShopForm() {
@@ -127,6 +129,28 @@ export default function ShopForm() {
                                 isDisabled={true}
                                 options={roles}
                                 value={roles?.find((element) => element.label == 'Shop')}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className='my-4'>
+                        <Col md={5} sm={12} className='mx-2'>
+                            <Label for='longitude'>{t('longitude')}</Label>
+                            <Input
+                                type='text'
+                                placeholder='Enter longitude'
+                                name='longitude'
+                                value={values.longitude}
+                                onChange={handleChange}
+                            />
+                        </Col>
+                        <Col md={5} sm={12} className='mx-2 mt-lg-0 mt-md-0 mt-sm-4'>
+                            <Label for='latitude'>{t('latitude')}</Label>
+                            <Input
+                                type='text'
+                                placeholder='Enter latitude'
+                                name='latitude'
+                                value={values.latitude}
+                                onChange={handleChange}
                             />
                         </Col>
                     </Row>
