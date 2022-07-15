@@ -15,7 +15,7 @@ export default {
     updateShop: 'shop/update-shop',
     getRequests: 'admin/get-update-requests',
     approveRequest: 'admin/update-shop/',
-    deleteRequest:'admin/delete-request/',
+    deleteRequest: 'admin/delete-request/',
     getOrders: (ln) => `shop/${ln}/orders`,
     getMyConversation: (ln) => `shop/${ln}/conversations`,
     getMessages: 'customer/get-messages/',
@@ -24,4 +24,5 @@ export default {
     getsingleCategory: (ln) => `admin/${ln}/get-category/`,
     updateCategory: (ln) => `admin/${ln}/update-category/`,
     getShop: 'shops/get-single-shop/',
+    adminUpdateShop: 'admin/shop-update',
 };

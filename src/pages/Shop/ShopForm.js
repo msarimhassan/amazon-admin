@@ -31,7 +31,9 @@ export default function ShopForm() {
         const obj = { ...values, role: mode.value };
         if (formMode.mode === 'edit')
         {
-            const response = await Network.put(Urls.adminUpdateShop + location.state.id, obj, (await config()).headers);
+             const obj2 = { ...values, role: mode.value,id:location.state.id };
+            
+            const response = await Network.put(Urls.adminUpdateShop, obj2, (await config()).headers);
               if (!response.ok) {
                   return toast.error(response.data.error, { position: 'top-right' });
               }
