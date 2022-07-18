@@ -47,7 +47,6 @@ export default function ProductForm() {
         setIsOpen(!isOpen);
     };
 
-    console.log({ mode });
     useEffect(() => {
         if (mode == 'edit') {
             getValues();
@@ -164,7 +163,7 @@ export default function ProductForm() {
                 <Loader />
             ) : (
                 <Form>
-                    <h1>{t('newProduct')}</h1>
+                    <h1>{mode == 'edit' ? t('updateProduct') : t('newProduct')}</h1>
 
                     <Label for='Name' className='mt-1'>
                         {t('name')}
@@ -275,7 +274,11 @@ export default function ProductForm() {
                     />
                     <br />
                     <div onClick={handleSubmit}>
-                        <LoadingButton loading={loadingbtn} text={t('submit')} type='submit' />
+                        <LoadingButton
+                            loading={loadingbtn}
+                            text={mode == 'edit' ? t('updateProduct') : t('submit')}
+                            type='submit'
+                        />
                     </div>
                 </Form>
             )}

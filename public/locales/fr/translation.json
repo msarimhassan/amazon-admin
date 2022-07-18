@@ -42,6 +42,7 @@
     "Products":"Des produits",
     "Orders":"Ordres",
     "Chats":"Discuter",
-    "status":"Statut"
+    "status":"Statut",
+    "updateProduct":"Mettre à jour le produit"
 
 }
