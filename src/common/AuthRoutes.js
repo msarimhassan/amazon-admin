@@ -1,22 +1,31 @@
-import { Login,Code } from "../auth"
+import { Login,Code,Verify,NewPassword } from "../auth"
 import PageNotFound from "../components/PageNotFound";
+import Routes from "./Routes";
+
 
 
 
 
 const AuthRoutes = [
     {
-        path: '/login',
+        path:Routes.Login,
         element: <Login />,
     },
     {
-        path: '/get-code',
+        path: Routes.getCode,
         element:<Code/>
     },
     {
-        path: '/*',
+        path: Routes.NotFound,
         element: <PageNotFound />,
     },
+    {
+        path: Routes.verifyUser,
+        element:<Verify/>
+    }, {
+        path: Routes.newPassword,
+        element:<NewPassword/>
+    }
 ];
 
 export default AuthRoutes;

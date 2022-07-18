@@ -8,5 +8,8 @@ export default {
     CategoryPage: '/categorypage',
     manageCategory: '/categorypage/addcategory/:mode',
     shop: '/shops',
-    getCode:'/get-code'
+    getCode: '/get-code',
+    verifyUser: '/verify',
+    NotFound: '/*',
+    newPassword: '/new-password',
 };

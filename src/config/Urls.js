@@ -26,4 +26,5 @@ export default {
     getShop: 'shops/get-single-shop/',
     adminUpdateShop: 'admin/shop-update',
     getCode: 'shop/send-code',
+    changePassword: 'shop/reset-password',
 };
