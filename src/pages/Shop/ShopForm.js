@@ -19,7 +19,7 @@ const initialValues = {
 
 export default function ShopForm() {
     const [roles, setRoles] = useState();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [loadingbtn, setLoadingBtn] = useState(false);
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -84,7 +84,6 @@ export default function ShopForm() {
     };
 
     const getRoles = async () => {
-        setLoading(true);
         const response = await Network.get(Urls.getRoles, (await config()).headers);
         const newarray = response.data.roles.map((element) => {
             return {
@@ -95,7 +94,6 @@ export default function ShopForm() {
         const obj = newarray.find((element) => element.label === 'Shop');
         setMode(obj);
         setRoles(newarray);
-        setLoading(false);
     };
 
     return (
