@@ -21,12 +21,6 @@ export const superAdmin = [
         icon: <AI.AiFillShop size={iconSize} />,
         link: '/shops',
     },
-
-    {
-        title: 'Profile',
-        icon: <AI.AiOutlineUser size={iconSize} />,
-        link: '/profile',
-    },
     {
         title: 'Requests',
         icon: <BI.BiBell size={iconSize} />,

@@ -43,6 +43,7 @@
     "Orders":"Orders",
     "Chats":"Chats",
     "status":"Status",
-    "updateProduct":"Update Product"
+    "updateProduct":"Update Product",
+    "update-category":"Update Category"
 
 }

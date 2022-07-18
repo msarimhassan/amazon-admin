@@ -95,7 +95,7 @@ export default function CategoryForm() {
                 <Loader />
             ) : (
                 <Form>
-                    <h1 className='px-3'>{t('create-category')}</h1>
+                    <h1 className='px-3'>{mode=='edit'?t('update-category'):t('create-category')}</h1>
                     <Row>
                         <Col md={6} sm={12} className='px-4'>
                             <Label for='CategoryName'>{t('category-name')}</Label>
@@ -118,7 +118,7 @@ export default function CategoryForm() {
                     <Row>
                         <Col sm={12} className='px-4 mt-2'>
                             <div onClick={handleSubmit}>
-                                <LoadingButton text={t('submit')} loading={loading} type='submit' />
+                                <LoadingButton text={mode==='edit'?t('update-category'):t('submit')} loading={loading} type='submit' />
                             </div>
                         </Col>
                     </Row>
