@@ -12,4 +12,5 @@ export default {
     verifyUser: '/verify',
     NotFound: '/*',
     newPassword: '/new-password',
+    notification:'/notification'
 };

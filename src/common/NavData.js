@@ -1,5 +1,6 @@
 
-import {Icons} from '../common'
+import { Icons } from '../common'
+import Routes from './Routes';
 
 const {AI,RI,BI} = Icons
 
@@ -25,6 +26,11 @@ export const superAdmin = [
         title: 'Requests',
         icon: <BI.BiBell size={iconSize} />,
         link: '/requests',
+    },
+    {
+        title: 'Notifications',
+        icon: <AI.AiOutlineNotification size={iconSize} />,
+        link: Routes.notification,
     },
     {
         title: 'Settings',

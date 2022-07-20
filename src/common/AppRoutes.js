@@ -13,6 +13,7 @@ import ShopProfile from '../pages/Shop/Profile';
 import RequestTable from '.././pages/Requests/';
 import Chat from '../pages/Shop/Chats';
 import PageNotFound from '../components/PageNotFound';
+import Notification from '../pages/Notifications';
 import Routes from './Routes';
 const AppRoutes = [
     {
@@ -66,6 +67,10 @@ const AppRoutes = [
     }, {
         path: '/shop/chats',
         element:<Chat/>
+    },
+    {
+        path: Routes.notification,
+        element:<Notification/>
     },
     {
         path: '/*',

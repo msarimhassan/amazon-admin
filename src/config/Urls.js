@@ -27,4 +27,5 @@ export default {
     adminUpdateShop: 'admin/shop-update',
     getCode: 'shop/send-code',
     changePassword: 'shop/reset-password',
+    createNotification: 'admin/send-notification',
 };
